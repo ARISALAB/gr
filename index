@@ -1,1 +1,874 @@
-f
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRis Festival — Greece As It Is</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#060504;
+  --white:#f7f2ea;
+  --accent:#e8c14a;
+  --accent2:#e84a6f;
+  --dim:#131110;
+  --mid:#1e1b18;
+  --gray:#5a5550;
+  --light:#a09890;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+#cur{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .2s,height .2s}
+#cur-r{position:fixed;width:36px;height:36px;border:1px solid rgba(232,193,74,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .35s,height .35s}
+body:has(a:hover) #cur,body:has(button:hover) #cur{width:28px;height:28px}
+body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:56px;height:56px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 4vw;height:70px;transition:background .4s}
+nav.stuck{background:rgba(6,5,4,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05)}
+.logo{font-family:'Unbounded',sans-serif;font-weight:900;font-size:1.1rem;letter-spacing:.05em;text-decoration:none;color:var(--white);display:flex;align-items:baseline;gap:1px}
+.logo em{font-style:normal;color:var(--accent)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-size:.65rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--light);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{font-family:'Unbounded',sans-serif;font-weight:700;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;background:var(--accent);color:var(--black);border:none;padding:.55rem 1.4rem;cursor:none;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));transition:background .2s}
+.nav-cta:hover{background:var(--white)}
+
+/* HERO */
+#hero{height:100vh;min-height:680px;position:relative;display:flex;align-items:flex-end;overflow:hidden}
+
+.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;background-size:cover;background-position:center}
+.hero-slide.on{opacity:1}
+
+.hero-grad{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(6,5,4,.35) 0%,rgba(6,5,4,.05) 30%,rgba(6,5,4,.65) 70%,rgba(6,5,4,1) 100%)}
+.hero-grad2{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(6,5,4,.6) 0%,transparent 60%)}
+
+.hero-content{position:relative;z-index:2;padding:0 4vw 7vh;width:100%}
+
+.hero-tag{font-size:.65rem;font-weight:400;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.8rem;margin-bottom:1.8rem;opacity:0;animation:slideUp .8s ease forwards .2s}
+.hero-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 1.4s infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.5)}}
+
+.hero-title{font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(5rem,14vw,12rem);line-height:.86;letter-spacing:-.03em;text-transform:uppercase;opacity:0;animation:slideUp 1s ease forwards .4s}
+.hero-title .t1{display:block;color:var(--white)}
+.hero-title .t2{display:block;color:transparent;-webkit-text-stroke:2px rgba(247,242,234,.8)}
+.hero-title .ti{color:var(--accent);-webkit-text-stroke:0}
+
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;margin-top:2.5rem;opacity:0;animation:slideUp .9s ease forwards .7s}
+.hero-meta{display:flex;gap:3.5rem}
+.hm-item span{display:block;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--light);margin-bottom:.3rem}
+.hm-item strong{font-family:'Unbounded',sans-serif;font-weight:400;font-size:.85rem}
+
+.hero-btns{display:flex;gap:.8rem}
+.btn-main{font-family:'Unbounded',sans-serif;font-weight:700;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;background:var(--accent);color:var(--black);border:none;padding:.75rem 1.8rem;cursor:none;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));text-decoration:none;display:inline-flex;align-items:center;transition:background .2s}
+.btn-main:hover{background:var(--white)}
+.btn-ghost{font-family:'Unbounded',sans-serif;font-weight:400;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.25);padding:.75rem 1.6rem;cursor:none;text-decoration:none;display:inline-flex;align-items:center;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* SLIDE DOTS */
+.hero-dots{position:absolute;right:4vw;bottom:8vh;z-index:3;display:flex;flex-direction:column;gap:.6rem}
+.h-dot{width:2px;height:20px;background:rgba(255,255,255,.2);cursor:none;transition:all .3s;border:none}
+.h-dot.on{height:40px;background:var(--accent)}
+
+/* SCROLL HINT */
+.scroll-hint{position:absolute;bottom:3vh;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:fadeIn 1s ease forwards 1.5s}
+.scroll-hint span{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--light)}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollPulse 2s ease-in-out infinite}
+@keyframes scrollPulse{0%,100%{opacity:.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.2) translateY(5px)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* COUNTDOWN */
+.cd-bar{background:var(--accent);display:flex;align-items:stretch;justify-content:center;position:relative;overflow:hidden}
+.cd-bar::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent 79px,rgba(0,0,0,.07) 79px,rgba(0,0,0,.07) 80px);pointer-events:none}
+.cd-unit{padding:1.4rem 2.5rem;display:flex;flex-direction:column;align-items:center;position:relative}
+.cd-unit:not(:last-of-type)::after{content:':';position:absolute;right:-2px;top:50%;transform:translateY(-56%);font-family:'Unbounded',sans-serif;font-size:2.2rem;font-weight:900;color:rgba(0,0,0,.2)}
+.cd-n{font-family:'Unbounded',sans-serif;font-weight:900;font-size:3rem;line-height:1;color:var(--black);letter-spacing:-.02em;min-width:3ch;text-align:center}
+.cd-l{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(0,0,0,.5);margin-top:.2rem}
+.cd-sep{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.5);padding:0 2rem;display:flex;align-items:center;border-left:1px solid rgba(0,0,0,.12);margin-left:.5rem}
+
+/* MARQUEE */
+.mq{overflow:hidden;padding:.6rem 0;background:var(--dim);border-top:1px solid rgba(255,255,255,.03)}
+.mq-t{display:inline-flex;animation:mq 25s linear infinite;white-space:nowrap}
+.mq:hover .mq-t{animation-play-state:paused}
+.mq-t span{font-family:'Unbounded',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.18);padding:0 2rem}
+.mq-t span.hi{color:var(--accent);opacity:.6}
+
+/* SHARED */
+.sl{font-size:.6rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.6rem;margin-bottom:.8rem}
+.sl::before{content:'';display:block;width:24px;height:1px;background:var(--accent)}
+.sh{font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(2.2rem,5.5vw,5rem);line-height:.9;letter-spacing:-.025em;text-transform:uppercase}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.reveal-l{opacity:0;transform:translateX(-28px);transition:opacity .75s ease,transform .75s ease}
+.reveal-l.vis{opacity:1;transform:translateX(0)}
+section{padding:7vw 4vw}
+
+/* ABOUT */
+#about{background:var(--dim);display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
+.about-img{position:relative;height:550px;overflow:hidden}
+.about-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block}
+.about-img:hover img{transform:scale(1.04)}
+.about-img-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--accent);color:var(--black);font-family:'Unbounded',sans-serif;font-weight:700;font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;padding:.5rem 1rem}
+.about-text p{font-size:.92rem;line-height:1.95;color:rgba(247,242,234,.55);margin-top:1.4rem}
+.about-text p strong{color:var(--white);font-weight:400}
+.art-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+.at{font-family:'Unbounded',sans-serif;font-weight:700;font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;padding:.4rem .9rem;border:1px solid rgba(255,255,255,.12);color:var(--light);cursor:none;transition:all .25s;position:relative;overflow:hidden}
+.at::before{content:'';position:absolute;inset:0;background:var(--accent);transform:translateX(-101%);transition:transform .3s}
+.at:hover{color:var(--black);border-color:var(--accent)}
+.at:hover::before{transform:translateX(0)}
+.at span{position:relative;z-index:1}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.05);margin-top:2rem}
+.astat{background:var(--mid);padding:1.5rem;transition:background .3s}
+.astat:hover{background:rgba(232,193,74,.07)}
+.astat-n{font-family:'Unbounded',sans-serif;font-weight:900;font-size:2.2rem;color:var(--accent);line-height:1}
+.astat-l{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-top:.3rem}
+
+/* GALLERY STRIP after about */
+.gallery-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;padding:0;background:var(--black)}
+.gs-item{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:none}
+.gs-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .4s}
+.gs-item:hover img{transform:scale(1.08);filter:brightness(1.1)}
+.gs-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,5,4,.7) 0%,transparent 50%);opacity:0;transition:opacity .4s}
+.gs-item:hover::after{opacity:1}
+.gs-label{position:absolute;bottom:1rem;left:1rem;font-family:'Unbounded',sans-serif;font-weight:700;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white);z-index:1;opacity:0;transform:translateY(5px);transition:all .4s}
+.gs-item:hover .gs-label{opacity:1;transform:translateY(0)}
+
+/* FESTIVALS */
+#festivals{background:var(--black);padding-left:0;padding-right:0}
+.fest-header{padding:0 4vw;margin-bottom:2.5rem;display:flex;align-items:flex-end;justify-content:space-between}
+.fest-scroll{display:flex;gap:2px;overflow-x:auto;padding:0 4vw 1rem;scrollbar-width:none;cursor:grab;user-select:none}
+.fest-scroll::-webkit-scrollbar{display:none}
+.fest-scroll:active{cursor:grabbing}
+
+.fcard{flex-shrink:0;width:300px;height:440px;position:relative;overflow:hidden;cursor:none}
+.fcard img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.fcard:hover img{transform:scale(1.06)}
+.fcard-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,5,4,.95) 0%,rgba(6,5,4,.3) 60%,transparent 100%)}
+.fcard-content{position:absolute;bottom:0;left:0;right:0;padding:2rem 1.8rem}
+.fcard-badge{font-family:'Unbounded',sans-serif;font-weight:700;font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .7rem;border:1px solid var(--accent);color:var(--accent);display:inline-block;margin-bottom:1rem;transition:background .3s}
+.fcard:hover .fcard-badge{background:var(--accent);color:var(--black)}
+.fcard.next .fcard-badge{background:var(--accent);color:var(--black)}
+.fcard-city{font-family:'Unbounded',sans-serif;font-weight:900;font-size:2rem;line-height:1;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.4rem}
+.fcard-date{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--light)}
+.fcard-line{width:30px;height:2px;background:var(--accent);margin-bottom:1rem;transition:width .4s}
+.fcard:hover .fcard-line{width:60px}
+
+/* LINEUP */
+#lineup{background:var(--dim)}
+.lp-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem}
+.lp-filters{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2rem}
+.lf{font-family:'Unbounded',sans-serif;font-weight:700;font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;padding:.42rem 1rem;border:1px solid rgba(255,255,255,.1);color:var(--light);background:transparent;cursor:none;transition:all .2s}
+.lf.on,.lf:hover{background:var(--accent);color:var(--black);border-color:var(--accent)}
+
+.artist-row{display:grid;grid-template-columns:56px 80px 1fr auto;align-items:center;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,.05);cursor:none;position:relative;overflow:hidden;transition:padding .3s}
+.artist-row::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(232,193,74,.05) 0%,transparent 60%);transform:translateX(-101%);transition:transform .4s cubic-bezier(.23,1,.32,1)}
+.artist-row:hover::before{transform:translateX(0)}
+.artist-row:hover{padding-left:.8rem}
+
+.ar-i{font-family:'Unbounded',sans-serif;font-weight:900;font-size:.9rem;color:rgba(255,255,255,.1);transition:color .3s}
+.artist-row:hover .ar-i{color:var(--accent)}
+.ar-img{width:64px;height:64px;overflow:hidden;flex-shrink:0}
+.ar-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(40%);transition:filter .3s}
+.artist-row:hover .ar-img img{filter:grayscale(0)}
+.ar-name{font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(1rem,2.5vw,1.8rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1;transition:color .3s}
+.artist-row:hover .ar-name{color:var(--accent)}
+.ar-sub{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-top:.3rem}
+.ar-r{display:flex;align-items:center;gap:1rem}
+.ar-type{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--light);padding:.22rem .65rem;border:1px solid rgba(255,255,255,.1)}
+.ar-arr{width:34px;height:34px;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:.9rem;transition:all .3s;flex-shrink:0}
+.artist-row:hover .ar-arr{border-color:var(--accent);color:var(--accent);background:rgba(232,193,74,.06)}
+
+/* PROGRAM */
+#program{background:var(--black)}
+.prog-tabs{display:flex;gap:0;flex-wrap:wrap;margin-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.pt{font-family:'Unbounded',sans-serif;font-weight:700;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;padding:.7rem 1.4rem;background:transparent;border:none;color:var(--gray);cursor:none;position:relative;transition:color .2s}
+.pt.on{color:var(--white)}
+.pt.on::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--accent)}
+.prog-panel{display:none}.prog-panel.on{display:block}
+.pe{display:grid;grid-template-columns:90px 70px 1fr 180px 90px;align-items:center;gap:1.2rem;padding:1.4rem 1rem;border-bottom:1px solid rgba(255,255,255,.05);cursor:none;transition:background .2s,padding .25s}
+.pe:hover{background:rgba(255,255,255,.02);padding-left:1.6rem}
+.pe:hover .pe-time{color:var(--accent)}
+.pe-time{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.1rem;color:rgba(255,255,255,.2);transition:color .3s}
+.pe-img{width:56px;height:56px;overflow:hidden;flex-shrink:0}
+.pe-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(50%);transition:filter .3s}
+.pe:hover .pe-img img{filter:grayscale(0)}
+.pe-title{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:-.01em;line-height:1.1}
+.pe-sub{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:.3rem}
+.pe-venue{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-align:right}
+.pe-badge{font-family:'Unbounded',sans-serif;font-size:.45rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:.22rem .6rem;border:1px solid;justify-self:end}
+.pe-badge.free{border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.25)}
+.pe-badge.ticket{border-color:rgba(232,193,74,.4);color:var(--accent)}
+.pe-badge.main{background:var(--accent2);color:var(--white);border-color:var(--accent2)}
+
+/* CITIES */
+#cities{padding:0}
+.cities-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--black)}
+.ctile{position:relative;overflow:hidden;height:300px;cursor:none}
+.ctile img{width:100%;height:100%;object-fit:cover;filter:grayscale(60%) brightness(.7);transition:filter .5s,transform .5s}
+.ctile:hover img{filter:grayscale(0) brightness(.85);transform:scale(1.06)}
+.ctile-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,5,4,.9) 0%,rgba(6,5,4,.3) 60%,transparent 100%)}
+.ctile-content{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem}
+.ctile-name{font-family:'Unbounded',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.3rem;transition:color .3s}
+.ctile:hover .ctile-name{color:var(--accent)}
+.ctile-year{font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--light)}
+.ctile.up .ctile-year{color:var(--accent)}
+.ctile.up::before{content:'NEXT';position:absolute;top:.8rem;right:.8rem;font-family:'Unbounded',sans-serif;font-size:.42rem;font-weight:700;letter-spacing:.15em;background:var(--accent);color:var(--black);padding:.2rem .55rem;z-index:1}
+
+/* GALLERY FULL */
+#gallery{background:var(--dim);padding-bottom:0}
+.gallery-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.gg-item{position:relative;overflow:hidden;cursor:none}
+.gg-item.big{grid-row:span 2}
+.gg-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease,filter .4s}
+.gg-item:hover img{transform:scale(1.06);filter:brightness(1.1)}
+.gg-item .gg-over{position:absolute;inset:0;background:rgba(6,5,4,.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s}
+.gg-item:hover .gg-over{opacity:1}
+.gg-plus{font-family:'Unbounded',sans-serif;font-size:2rem;color:var(--white);font-weight:300}
+
+/* MANIFESTO */
+#manifesto{background:var(--black);text-align:center;position:relative;overflow:hidden;padding:10vw 4vw}
+#manifesto .bg-word{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Unbounded',sans-serif;font-weight:900;font-size:20vw;color:rgba(255,255,255,.02);text-transform:uppercase;letter-spacing:-.05em;white-space:nowrap;pointer-events:none;user-select:none}
+.manifesto-q{font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,4.5rem);line-height:1.05;letter-spacing:-.025em;text-transform:uppercase;max-width:950px;margin:0 auto;position:relative}
+.manifesto-q em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--accent)}
+.manifesto-p{margin:2rem auto 0;font-size:.9rem;line-height:1.95;color:rgba(247,242,234,.45);max-width:550px;position:relative}
+.manifesto-ctas{display:flex;justify-content:center;gap:.8rem;margin-top:3rem;position:relative}
+
+/* CONTACT */
+#contact{background:var(--dim);display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0}
+.con-l{padding:7vw 4vw;border-right:1px solid rgba(255,255,255,.05)}
+.con-r{padding:7vw 4vw}
+.ci{display:flex;align-items:flex-start;gap:1.2rem;padding:1.3rem 0;border-bottom:1px solid rgba(255,255,255,.05);cursor:none;transition:padding .2s}
+.ci:hover{padding-left:.6rem}
+.ci-icon{width:40px;height:40px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:border-color .3s}
+.ci:hover .ci-icon{border-color:var(--accent)}
+.ci-lbl{font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gray);margin-bottom:.25rem}
+.ci-val{font-size:.85rem;color:var(--white)}
+.ci-val a{color:var(--white);text-decoration:none;transition:color .2s}
+.ci-val a:hover{color:var(--accent)}
+.soc{display:flex;gap:.6rem;margin-top:2rem}
+.sb{font-family:'Unbounded',sans-serif;font-weight:700;font-size:.48rem;letter-spacing:.15em;text-transform:uppercase;padding:.55rem 1rem;border:1px solid rgba(255,255,255,.1);color:var(--light);text-decoration:none;cursor:none;transition:all .2s}
+.sb:hover{background:var(--accent);border-color:var(--accent);color:var(--black)}
+.f-group{display:flex;flex-direction:column;gap:.9rem;margin-top:1.5rem}
+.f-lbl{font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gray);display:block;margin-bottom:.35rem}
+.f-inp,.f-ta{width:100%;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);color:var(--white);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:300;padding:.8rem 1rem;outline:none;resize:none;transition:border-color .2s}
+.f-inp:focus,.f-ta:focus{border-color:var(--accent)}
+.f-inp::placeholder,.f-ta::placeholder{color:var(--gray)}
+.f-ta{height:100px}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3.5rem;padding:5vw 4vw 4vw}
+.f-logo{font-family:'Unbounded',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:.05em;text-decoration:none;color:var(--white);display:block;margin-bottom:.8rem}
+.f-logo em{font-style:normal;color:var(--accent)}
+.f-desc{font-size:.75rem;line-height:1.9;color:var(--gray);max-width:240px}
+.f-col h4{font-family:'Unbounded',sans-serif;font-weight:700;font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:var(--white);margin-bottom:1.3rem}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.f-col a{font-size:.75rem;color:var(--gray);text-decoration:none;transition:color .2s}
+.f-col a:hover{color:var(--accent)}
+.foot-bar{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4vw;border-top:1px solid rgba(255,255,255,.04)}
+.f-copy{font-size:.58rem;letter-spacing:.12em;color:rgba(255,255,255,.15)}
+.f-tag{font-family:'Unbounded',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(232,193,74,.25)}
+
+@media(max-width:1000px){
+  #about,#contact{grid-template-columns:1fr}
+  .cities-grid{grid-template-columns:repeat(3,1fr)}
+  .gallery-strip,.gallery-grid{grid-template-columns:repeat(3,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .pe{grid-template-columns:70px 50px 1fr 70px}
+  .pe-venue{display:none}
+}
+@media(max-width:640px){
+  .nav-links,.nav-cta{display:none}
+  .cities-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-strip{grid-template-columns:repeat(2,1fr)}
+  .hero-meta{flex-direction:column;gap:1rem}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  .manifesto-ctas{flex-direction:column;align-items:center}
+  .foot-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-r"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">GR<em>i</em>s Festival</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#festivals">Festival</a></li>
+    <li><a href="#lineup">Lineup</a></li>
+    <li><a href="#program">Program</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Buy Tickets ↗</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- Slideshow: real GRis photos + free Unsplash festival images -->
+  <div class="hero-slides">
+    <div class="hero-slide on" style="background-image:url('https://grisfestival.com/wp-content/uploads/2025/06/01.jpeg')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1600&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://grisfestival.com/wp-content/uploads/2025/06/3.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80')"></div>
+    <div class="hero-slide" style="background-image:url('https://grisfestival.com/wp-content/uploads/2025/06/5-scaled.jpg')"></div>
+  </div>
+  <div class="hero-grad"></div>
+  <div class="hero-grad2"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag"><span class="dot"></span>Greece As It Is &nbsp;·&nbsp; Berlin Oct 2025</div>
+    <h1 class="hero-title">
+      <span class="t1">GR<span class="ti">i</span>s</span>
+      <span class="t2">Festival</span>
+    </h1>
+    <div class="hero-bottom">
+      <div class="hero-meta">
+        <div class="hm-item"><span>Next Stop</span><strong>Berlin 2025</strong></div>
+        <div class="hm-item"><span>Dates</span><strong>14 – 19 Oct</strong></div>
+        <div class="hm-item"><span>Arts</span><strong>Music · Theater · Dance · Visual</strong></div>
+      </div>
+      <div class="hero-btns">
+        <a href="#lineup" class="btn-main">Explore Lineup ↓</a>
+        <a href="#contact" class="btn-ghost">Get Tickets</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-dots" id="heroDots">
+    <button class="h-dot on" onclick="goSlide(0)"></button>
+    <button class="h-dot" onclick="goSlide(1)"></button>
+    <button class="h-dot" onclick="goSlide(2)"></button>
+    <button class="h-dot" onclick="goSlide(3)"></button>
+    <button class="h-dot" onclick="goSlide(4)"></button>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="cd-bar">
+  <div class="cd-unit"><div class="cd-n" id="d">00</div><div class="cd-l">Days</div></div>
+  <div class="cd-unit"><div class="cd-n" id="h">00</div><div class="cd-l">Hours</div></div>
+  <div class="cd-unit"><div class="cd-n" id="m">00</div><div class="cd-l">Minutes</div></div>
+  <div class="cd-unit"><div class="cd-n" id="s">00</div><div class="cd-l">Seconds</div></div>
+  <div class="cd-sep">Until Berlin 2025</div>
+</div>
+
+<!-- MARQUEE -->
+<div class="mq"><div class="mq-t">
+  <span class="hi">GRis Festival</span><span>Music</span><span>Theater</span><span>Dance</span><span>Visual Arts</span><span>Photography</span><span>Film</span><span class="hi">Greece As It Is</span><span>Berlin 2025</span><span>Thessaloniki 2025</span><span>Athens 2024</span><span>New York 2024</span>
+  <span class="hi">GRis Festival</span><span>Music</span><span>Theater</span><span>Dance</span><span>Visual Arts</span><span>Photography</span><span>Film</span><span class="hi">Greece As It Is</span><span>Berlin 2025</span><span>Thessaloniki 2025</span><span>Athens 2024</span><span>New York 2024</span>
+</div></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-img reveal-l">
+    <img src="https://grisfestival.com/wp-content/uploads/2025/06/2.jpg" alt="GRis Festival performance" loading="lazy">
+    <div class="about-img-badge">Greece As It Is</div>
+  </div>
+  <div class="reveal">
+    <div class="sl">About</div>
+    <h2 class="sh">Immerse<br>Yourself in<br>Greek Culture</h2>
+    <p class="about-text">GRis Festival is a <strong>new, modern festival from Greece</strong> dedicated to showcasing artists with a fresh and innovative approach to Greek culture and heritage.</p>
+    <p class="about-text">From the traditional to the avant-garde — through collaborations and the exchange of ideas, celebrating the richness of <strong>Greek culture in all its forms</strong>.</p>
+    <div class="art-tags">
+      <div class="at"><span>🎵 Music</span></div>
+      <div class="at"><span>🎭 Theater</span></div>
+      <div class="at"><span>💃 Dance</span></div>
+      <div class="at"><span>🎨 Visual Arts</span></div>
+      <div class="at"><span>📷 Photography</span></div>
+      <div class="at"><span>🎬 Film</span></div>
+    </div>
+    <div class="about-stats">
+      <div class="astat"><div class="astat-n">5+</div><div class="astat-l">Cities</div></div>
+      <div class="astat"><div class="astat-n">50+</div><div class="astat-l">Artists</div></div>
+      <div class="astat"><div class="astat-n">6</div><div class="astat-l">Art Forms</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<div class="gallery-strip">
+  <div class="gs-item">
+    <img src="https://grisfestival.com/wp-content/uploads/2025/06/4-570x696.jpg" alt="GRis Festival" loading="lazy">
+    <div class="gs-label">Athens 2024</div>
+  </div>
+  <div class="gs-item">
+    <img src="https://grisfestival.com/wp-content/uploads/2025/06/6-570x696.jpg" alt="GRis Festival" loading="lazy">
+    <div class="gs-label">Music</div>
+  </div>
+  <div class="gs-item">
+    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Festival" loading="lazy">
+    <div class="gs-label">Theater</div>
+  </div>
+  <div class="gs-item">
+    <img src="https://images.unsplash.com/photo-1508854710579-5cecc3a9ff17?w=600&q=80" alt="Festival" loading="lazy">
+    <div class="gs-label">Dance</div>
+  </div>
+  <div class="gs-item">
+    <img src="https://grisfestival.com/wp-content/uploads/2025/06/3-570x696.jpg" alt="GRis Festival" loading="lazy">
+    <div class="gs-label">New York 2024</div>
+  </div>
+</div>
+
+<!-- FESTIVALS -->
+<section id="festivals">
+  <div class="fest-header reveal">
+    <div><div class="sl">Editions</div><h2 class="sh">Festivals</h2></div>
+    <a href="#" class="btn-ghost">All Editions →</a>
+  </div>
+  <div class="fest-scroll" id="festScroll">
+    <div class="fcard next">
+      <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=80" alt="Berlin" loading="lazy">
+      <div class="fcard-grad"></div>
+      <div class="fcard-content">
+        <div class="fcard-badge">Coming Soon</div>
+        <div class="fcard-line"></div>
+        <div class="fcard-city">Berlin</div>
+        <div class="fcard-date">14 – 19 October 2025 · Germany</div>
+      </div>
+    </div>
+    <div class="fcard next">
+      <img src="https://images.unsplash.com/photo-1591471937631-2f64a5e7f4ef?w=600&q=80" alt="Thessaloniki" loading="lazy">
+      <div class="fcard-grad"></div>
+      <div class="fcard-content">
+        <div class="fcard-badge">2025</div>
+        <div class="fcard-line"></div>
+        <div class="fcard-city">Thessaloniki</div>
+        <div class="fcard-date">2025 · Greece</div>
+      </div>
+    </div>
+    <div class="fcard">
+      <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" alt="Athens" loading="lazy">
+      <div class="fcard-grad"></div>
+      <div class="fcard-content">
+        <div class="fcard-badge">2024</div>
+        <div class="fcard-line"></div>
+        <div class="fcard-city">Athens</div>
+        <div class="fcard-date">Oct – Nov 2024 · Greece</div>
+      </div>
+    </div>
+    <div class="fcard">
+      <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80" alt="New York" loading="lazy">
+      <div class="fcard-grad"></div>
+      <div class="fcard-content">
+        <div class="fcard-badge">2024</div>
+        <div class="fcard-line"></div>
+        <div class="fcard-city">New York</div>
+        <div class="fcard-date">2024 · USA</div>
+      </div>
+    </div>
+    <div class="fcard">
+      <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&q=80" alt="Nicosia" loading="lazy">
+      <div class="fcard-grad"></div>
+      <div class="fcard-content">
+        <div class="fcard-badge">2024</div>
+        <div class="fcard-line"></div>
+        <div class="fcard-city">Nicosia</div>
+        <div class="fcard-date">2024 · Cyprus</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINEUP -->
+<section id="lineup">
+  <div class="lp-top reveal">
+    <div><div class="sl">Berlin 2025</div><h2 class="sh">Lineup</h2></div>
+    <a href="#" class="btn-ghost">Full Lineup →</a>
+  </div>
+  <div class="lp-filters reveal">
+    <button class="lf on" onclick="flp(this,'all')">All</button>
+    <button class="lf" onclick="flp(this,'music')">Music</button>
+    <button class="lf" onclick="flp(this,'theater')">Theater</button>
+    <button class="lf" onclick="flp(this,'dance')">Dance</button>
+    <button class="lf" onclick="flp(this,'visual')">Visual Arts</button>
+    <button class="lf" onclick="flp(this,'poetry')">Poetry</button>
+  </div>
+  <div id="alist" class="reveal">
+    <div class="artist-row" data-cat="music">
+      <div class="ar-i">01</div>
+      <div class="ar-img"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="ar-name">Grey River & The Smoky Mountain</div><div class="ar-sub">Folk Music · Headliner</div></div>
+      <div class="ar-r"><div class="ar-type">Music</div><div class="ar-arr">→</div></div>
+    </div>
+    <div class="artist-row" data-cat="theater">
+      <div class="ar-i">02</div>
+      <div class="ar-img"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="ar-name">Στη Σκιά των Ανθρώπων</div><div class="ar-sub">Music-Theater Performance</div></div>
+      <div class="ar-r"><div class="ar-type">Theater</div><div class="ar-arr">→</div></div>
+    </div>
+    <div class="artist-row" data-cat="visual">
+      <div class="ar-i">03</div>
+      <div class="ar-img"><img src="https://grisfestival.com/wp-content/uploads/2025/06/01-570x696.jpeg" alt="" loading="lazy"></div>
+      <div><div class="ar-name">Εικαστική Απεικόνιση</div><div class="ar-sub">Η Μοναδικότητα στο Σύνολο · Group Exhibition</div></div>
+      <div class="ar-r"><div class="ar-type">Visual Arts</div><div class="ar-arr">→</div></div>
+    </div>
+    <div class="artist-row" data-cat="music">
+      <div class="ar-i">04</div>
+      <div class="ar-img"><img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="ar-name">Μάνος Πυροβολάκης | Κουρήτες</div><div class="ar-sub">Αφιέρωμα στην Κρήτη · Cretan Night Concert</div></div>
+      <div class="ar-r"><div class="ar-type">Music</div><div class="ar-arr">→</div></div>
+    </div>
+    <div class="artist-row" data-cat="music">
+      <div class="ar-i">05</div>
+      <div class="ar-img"><img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="ar-name">Γιώργος Βαρσαμάκης</div><div class="ar-sub">Classical Music Evening</div></div>
+      <div class="ar-r"><div class="ar-type">Music</div><div class="ar-arr">→</div></div>
+    </div>
+    <div class="artist-row" data-cat="poetry">
+      <div class="ar-i">06</div>
+      <div class="ar-img"><img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="ar-name">Σάννυ Μπαλτζή & Γ. Βαρσαμάκης</div><div class="ar-sub">Workshop Ποίησης & Σύνθεσης</div></div>
+      <div class="ar-r"><div class="ar-type">Poetry</div><div class="ar-arr">→</div></div>
+    </div>
+    <div class="artist-row" data-cat="poetry">
+      <div class="ar-i">07</div>
+      <div class="ar-img"><img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="ar-name">Από τον Κωστή Παλαμά στο Σήμερα</div><div class="ar-sub">Poetry Presentation & Discussion</div></div>
+      <div class="ar-r"><div class="ar-type">Poetry</div><div class="ar-arr">→</div></div>
+    </div>
+    <div class="artist-row" data-cat="visual">
+      <div class="ar-i">08</div>
+      <div class="ar-img"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="ar-name">Ημερίδα Περιβάλλοντος</div><div class="ar-sub">Από την Παραγωγή στην Κατανάλωση</div></div>
+      <div class="ar-r"><div class="ar-type">Talk</div><div class="ar-arr">→</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="reveal" style="margin-bottom:2.5rem"><div class="sl">Schedule</div><h2 class="sh">Program<br>Berlin 2025</h2></div>
+  <div class="prog-tabs reveal">
+    <button class="pt on" onclick="sp(this,'pp1')">Thu 14/10</button>
+    <button class="pt" onclick="sp(this,'pp2')">Fri 15/10</button>
+    <button class="pt" onclick="sp(this,'pp3')">Sat 16/10</button>
+    <button class="pt" onclick="sp(this,'pp4')">Sun 17/10</button>
+    <button class="pt" onclick="sp(this,'pp5')">Mon 18/10</button>
+    <button class="pt" onclick="sp(this,'pp6')">Tue 19/10</button>
+  </div>
+  <div id="pp1" class="prog-panel on reveal">
+    <div class="pe">
+      <div class="pe-time">18:00</div>
+      <div class="pe-img"><img src="https://grisfestival.com/wp-content/uploads/2025/06/4-570x696.jpg" alt="" loading="lazy"></div>
+      <div><div class="pe-title">Εικαστική Απεικόνιση — Opening</div><div class="pe-sub">Group Painting Exhibition · Vernissage</div></div>
+      <div class="pe-venue">Gallery · Berlin</div>
+      <div class="pe-badge free">Free</div>
+    </div>
+    <div class="pe">
+      <div class="pe-time">20:30</div>
+      <div class="pe-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="pe-title">GRis Festival Berlin — Opening Night</div><div class="pe-sub">Welcome Address & Presentations</div></div>
+      <div class="pe-venue">Main Hall</div>
+      <div class="pe-badge main">Opening</div>
+    </div>
+  </div>
+  <div id="pp2" class="prog-panel reveal">
+    <div class="pe">
+      <div class="pe-time">18:00</div>
+      <div class="pe-img"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="pe-title">HOME — Grey River & The Smoky Mountain</div><div class="pe-sub">Folk Music Live Concert</div></div>
+      <div class="pe-venue">Stage A</div>
+      <div class="pe-badge ticket">Ticketed</div>
+    </div>
+    <div class="pe">
+      <div class="pe-time">20:30</div>
+      <div class="pe-img"><img src="https://grisfestival.com/wp-content/uploads/2025/06/01-570x696.jpeg" alt="" loading="lazy"></div>
+      <div><div class="pe-title">Exhibition Open Hours</div><div class="pe-sub">Εικαστική Απεικόνιση · Guided Tour</div></div>
+      <div class="pe-venue">Gallery</div>
+      <div class="pe-badge free">Free</div>
+    </div>
+  </div>
+  <div id="pp3" class="prog-panel reveal">
+    <div class="pe">
+      <div class="pe-time">17:00</div>
+      <div class="pe-img"><img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="pe-title">Workshop Ποίησης & Σύνθεσης</div><div class="pe-sub">Σάννυ Μπαλτζή, Γιώργος Βαρσαμάκης</div></div>
+      <div class="pe-venue">Workshop Room</div>
+      <div class="pe-badge ticket">Ticketed</div>
+    </div>
+    <div class="pe">
+      <div class="pe-time">20:30</div>
+      <div class="pe-img"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="pe-title">Στη Σκιά των Ανθρώπων</div><div class="pe-sub">Music-Theater Performance</div></div>
+      <div class="pe-venue">Main Stage</div>
+      <div class="pe-badge main">Headliner</div>
+    </div>
+  </div>
+  <div id="pp4" class="prog-panel reveal">
+    <div class="pe">
+      <div class="pe-time">11:00</div>
+      <div class="pe-img"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="pe-title">Ημερίδα Περιβάλλοντος</div><div class="pe-sub">Από την Παραγωγή στην Κατανάλωση</div></div>
+      <div class="pe-venue">Conference</div>
+      <div class="pe-badge free">Free</div>
+    </div>
+    <div class="pe">
+      <div class="pe-time">19:00</div>
+      <div class="pe-img"><img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="pe-title">Γιώργος Βαρσαμάκης</div><div class="pe-sub">Classical Music Evening</div></div>
+      <div class="pe-venue">Chamber Hall</div>
+      <div class="pe-badge ticket">Ticketed</div>
+    </div>
+  </div>
+  <div id="pp5" class="prog-panel reveal">
+    <div class="pe">
+      <div class="pe-time">18:00</div>
+      <div class="pe-img"><img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="pe-title">Από τον Κωστή Παλαμά στο Σήμερα</div><div class="pe-sub">Poetry Presentation & Discussion</div></div>
+      <div class="pe-venue">Lecture Hall</div>
+      <div class="pe-badge free">Free</div>
+    </div>
+    <div class="pe">
+      <div class="pe-time">21:00</div>
+      <div class="pe-img"><img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="pe-title">Αφιέρωμα στην Κρήτη</div><div class="pe-sub">Μάνος Πυροβολάκης | Κουρήτες · Cretan Evening</div></div>
+      <div class="pe-venue">Main Stage</div>
+      <div class="pe-badge main">Headliner</div>
+    </div>
+  </div>
+  <div id="pp6" class="prog-panel reveal">
+    <div class="pe">
+      <div class="pe-time">19:00</div>
+      <div class="pe-img"><img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=120&q=80" alt="" loading="lazy"></div>
+      <div><div class="pe-title">Closing Night — GRis Berlin 2025</div><div class="pe-sub">Final Performances · Awards · Celebration</div></div>
+      <div class="pe-venue">All Venues</div>
+      <div class="pe-badge main">Closing</div>
+    </div>
+  </div>
+</section>
+
+<!-- CITIES -->
+<section id="cities" style="padding:0">
+  <div class="cities-grid">
+    <div class="ctile up">
+      <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=80" alt="Berlin" loading="lazy">
+      <div class="ctile-grad"></div>
+      <div class="ctile-content"><div class="ctile-name">Berlin</div><div class="ctile-year">Oct 2025</div></div>
+    </div>
+    <div class="ctile up">
+      <img src="https://images.unsplash.com/photo-1591471937631-2f64a5e7f4ef?w=600&q=80" alt="Thessaloniki" loading="lazy">
+      <div class="ctile-grad"></div>
+      <div class="ctile-content"><div class="ctile-name">Thessaloniki</div><div class="ctile-year">2025</div></div>
+    </div>
+    <div class="ctile">
+      <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" alt="Athens" loading="lazy">
+      <div class="ctile-grad"></div>
+      <div class="ctile-content"><div class="ctile-name">Athens</div><div class="ctile-year">2024</div></div>
+    </div>
+    <div class="ctile">
+      <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80" alt="New York" loading="lazy">
+      <div class="ctile-grad"></div>
+      <div class="ctile-content"><div class="ctile-name">New York</div><div class="ctile-year">2024</div></div>
+    </div>
+    <div class="ctile">
+      <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&q=80" alt="Nicosia" loading="lazy">
+      <div class="ctile-grad"></div>
+      <div class="ctile-content"><div class="ctile-name">Nicosia</div><div class="ctile-year">2024</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-header reveal">
+    <div><div class="sl">Photos</div><h2 class="sh">Gallery</h2></div>
+    <a href="https://grisfestival.com/gallery/" target="_blank" class="btn-ghost">Full Gallery →</a>
+  </div>
+  <div class="gallery-grid">
+    <div class="gg-item big" style="height:600px">
+      <img src="https://grisfestival.com/wp-content/uploads/2025/06/01.jpeg" alt="GRis Festival" loading="lazy">
+      <div class="gg-over"><div class="gg-plus">+</div></div>
+    </div>
+    <div class="gg-item" style="height:299px">
+      <img src="https://grisfestival.com/wp-content/uploads/2025/06/2.jpg" alt="GRis Festival" loading="lazy">
+      <div class="gg-over"><div class="gg-plus">+</div></div>
+    </div>
+    <div class="gg-item" style="height:299px">
+      <img src="https://grisfestival.com/wp-content/uploads/2025/06/3.jpg" alt="GRis Festival" loading="lazy">
+      <div class="gg-over"><div class="gg-plus">+</div></div>
+    </div>
+    <div class="gg-item" style="height:299px">
+      <img src="https://grisfestival.com/wp-content/uploads/2025/06/4-570x696.jpg" alt="GRis Festival" loading="lazy">
+      <div class="gg-over"><div class="gg-plus">+</div></div>
+    </div>
+    <div class="gg-item" style="height:299px">
+      <img src="https://grisfestival.com/wp-content/uploads/2025/06/5-scaled.jpg" alt="GRis Festival" loading="lazy">
+      <div class="gg-over"><div class="gg-plus">+</div></div>
+    </div>
+    <div class="gg-item" style="height:299px">
+      <img src="https://grisfestival.com/wp-content/uploads/2025/06/6.jpg" alt="GRis Festival" loading="lazy">
+      <div class="gg-over"><div class="gg-plus">+</div></div>
+    </div>
+    <div class="gg-item" style="height:299px">
+      <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Festival" loading="lazy">
+      <div class="gg-over"><div class="gg-plus">+</div></div>
+    </div>
+    <div class="gg-item" style="height:299px">
+      <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80" alt="Festival" loading="lazy">
+      <div class="gg-over"><div class="gg-plus">+</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="bg-word">GRis</div>
+  <div class="reveal">
+    <div class="sl" style="justify-content:center">Our Mission</div>
+    <h2 class="manifesto-q">Make the world feel the <em>modern GR vibes</em></h2>
+    <p class="manifesto-p">GRis Festival is all about bringing people together and fostering a greater understanding and appreciation of different cultures — from the traditional to the avant-garde.</p>
+    <div class="manifesto-ctas">
+      <a href="#about" class="btn-main">About the Festival</a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:0">
+  <div class="con-l reveal">
+    <div class="sl">Contact</div>
+    <h2 class="sh">Get in<br>Touch</h2>
+    <div style="margin-top:2.5rem">
+      <div class="ci"><div class="ci-icon">✉</div><div><div class="ci-lbl">General</div><div class="ci-val"><a href="mailto:info@grisfestival.com">info@grisfestival.com</a></div></div></div>
+      <div class="ci"><div class="ci-icon">🎭</div><div><div class="ci-lbl">Artists</div><div class="ci-val"><a href="mailto:artists@grisfestival.com">artists@grisfestival.com</a></div></div></div>
+      <div class="ci"><div class="ci-icon">📰</div><div><div class="ci-lbl">Press & Media</div><div class="ci-val"><a href="mailto:press@grisfestival.com">press@grisfestival.com</a></div></div></div>
+    </div>
+    <div class="soc">
+      <a href="https://www.facebook.com/GRisFestival2024" target="_blank" class="sb">Facebook</a>
+      <a href="https://www.instagram.com/grisfestival/" target="_blank" class="sb">Instagram</a>
+      <a href="https://www.youtube.com/@GRisFestival" target="_blank" class="sb">YouTube</a>
+    </div>
+  </div>
+  <div class="con-r reveal">
+    <div class="sl">Message Us</div>
+    <h3 style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;letter-spacing:-.02em;line-height:1;margin-bottom:1.5rem">Drop Us<br>a Line</h3>
+    <div class="f-group">
+      <div><label class="f-lbl">Full Name</label><input class="f-inp" type="text" placeholder="Your name"></div>
+      <div><label class="f-lbl">Email</label><input class="f-inp" type="email" placeholder="your@email.com"></div>
+      <div><label class="f-lbl">Subject</label><input class="f-inp" type="text" placeholder="How can we help?"></div>
+      <div><label class="f-lbl">Message</label><textarea class="f-ta" placeholder="Your message..."></textarea></div>
+      <div><button class="btn-main" style="cursor:none">Send Message →</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <a href="#" class="f-logo">GR<em>i</em>s Festival</a>
+      <p class="f-desc">A festival from Greece dedicated to showcasing artists with a fresh approach to Greek culture and heritage. Music · Theater · Dance · Arts · Photography · Film.</p>
+    </div>
+    <div class="f-col"><h4>Festival</h4><ul>
+      <li><a href="#">Berlin 2025</a></li>
+      <li><a href="#">Thessaloniki 2025</a></li>
+      <li><a href="#">Athens 2024</a></li>
+      <li><a href="#">Nicosia 2024</a></li>
+      <li><a href="#">New York 2024</a></li>
+    </ul></div>
+    <div class="f-col"><h4>Explore</h4><ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#lineup">Lineup</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#">Videos</a></li>
+    </ul></div>
+    <div class="f-col"><h4>Info</h4><ul>
+      <li><a href="#">Buy Tickets</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#">Press</a></li>
+      <li><a href="#">Artist Applications</a></li>
+    </ul></div>
+  </div>
+  <div class="foot-bar">
+    <span class="f-copy">© 2025 GRis Festival · All rights reserved</span>
+    <span class="f-tag">Greece As It Is</span>
+  </div>
+</footer>
+
+<script>
+// Cursor
+const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function a(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(a)})();
+
+// Nav
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('stuck',scrollY>60));
+
+// Hero slideshow
+let cur_slide=0;
+const slides=document.querySelectorAll('.hero-slide');
+const dots=document.querySelectorAll('.h-dot');
+function goSlide(n){
+  slides[cur_slide].classList.remove('on');
+  dots[cur_slide].classList.remove('on');
+  cur_slide=n;
+  slides[cur_slide].classList.add('on');
+  dots[cur_slide].classList.add('on');
+}
+setInterval(()=>goSlide((cur_slide+1)%slides.length),5000);
+
+// Countdown
+(function(){
+  const t=new Date('2025-10-14T19:00:00');
+  function u(){
+    const diff=t-new Date();
+    if(diff<=0)return;
+    const pad=n=>String(Math.floor(n)).padStart(2,'0');
+    document.getElementById('d').textContent=pad(diff/86400000);
+    document.getElementById('h').textContent=pad((diff%86400000)/3600000);
+    document.getElementById('m').textContent=pad((diff%3600000)/60000);
+    document.getElementById('s').textContent=pad((diff%60000)/1000);
+  }
+  u();setInterval(u,1000);
+})();
+
+// Reveal
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.07});
+document.querySelectorAll('.reveal,.reveal-l').forEach(el=>obs.observe(el));
+
+// Lineup filter
+function flp(btn,cat){
+  document.querySelectorAll('.lf').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  document.querySelectorAll('.artist-row').forEach(r=>r.style.display=(cat==='all'||r.dataset.cat===cat)?'':'none');
+}
+
+// Program tabs
+function sp(btn,id){
+  document.querySelectorAll('.pt').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.prog-panel').forEach(p=>p.classList.remove('on'));
+  btn.classList.add('on');document.getElementById(id).classList.add('on');
+}
+
+// Drag scroll fest cards
+const fs=document.getElementById('festScroll');
+let isDown=false,startX,sl;
+fs.addEventListener('mousedown',e=>{isDown=true;startX=e.pageX-fs.offsetLeft;sl=fs.scrollLeft});
+document.addEventListener('mouseup',()=>isDown=false);
+fs.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();fs.scrollLeft=sl-(e.pageX-fs.offsetLeft-startX)*1.5});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}});
+});
+</script>
+</body>
+</html>
