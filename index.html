@@ -275,22 +275,180 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
 .f-copy{font-size:.58rem;letter-spacing:.12em;color:rgba(255,255,255,.15)}
 .f-tag{font-family:'Unbounded',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:rgba(232,193,74,.25)}
 
-@media(max-width:1000px){
-  #about,#contact{grid-template-columns:1fr}
-  .cities-grid{grid-template-columns:repeat(3,1fr)}
-  .gallery-strip,.gallery-grid{grid-template-columns:repeat(3,1fr)}
-  .foot-grid{grid-template-columns:1fr 1fr}
-  .pe{grid-template-columns:70px 50px 1fr 70px}
-  .pe-venue{display:none}
+/* ── MOBILE NAV OVERLAY ── */
+#mob-nav{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(6,5,4,.98);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;
+  opacity:0;pointer-events:none;transform:translateY(-12px);
+  transition:opacity .35s ease,transform .35s ease;
 }
+#mob-nav.open{opacity:1;pointer-events:all;transform:translateY(0)}
+#mob-nav a{
+  font-family:'Unbounded',sans-serif;font-weight:900;
+  font-size:2rem;letter-spacing:-.01em;text-transform:uppercase;
+  color:var(--white);text-decoration:none;transition:color .2s;
+}
+#mob-nav a:hover{color:var(--accent)}
+#mob-nav .mob-cta{
+  margin-top:1rem;font-size:.9rem;
+  background:var(--accent);color:var(--black);
+  padding:.8rem 2.5rem;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
+}
+.mob-close{
+  position:absolute;top:1.5rem;right:1.5rem;
+  background:none;border:none;color:var(--white);
+  font-size:1.8rem;cursor:pointer;line-height:1;padding:.5rem;
+}
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  background:none;border:none;padding:4px;cursor:pointer;
+}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--white);transition:all .3s}
+
+/* ── TABLET ── */
+@media(max-width:1024px){
+  #about{grid-template-columns:1fr;gap:3rem}
+  .about-img{height:380px}
+  #contact{grid-template-columns:1fr}
+  .con-l{border-right:none;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:4vw}
+  .cities-grid{grid-template-columns:repeat(3,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-strip{grid-template-columns:repeat(3,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+  .pe{grid-template-columns:80px 48px 1fr 80px}
+  .pe-venue{display:none}
+  .festivals-header{padding-right:4vw}
+}
+
+/* ── MOBILE ── */
 @media(max-width:640px){
+  /* Cursor off on touch */
+  #cur,#cur-r{display:none}
+  body{cursor:auto}
+  a,button{cursor:pointer}
+
+  /* Nav */
+  nav{padding:0 5vw;height:60px}
   .nav-links,.nav-cta{display:none}
-  .cities-grid{grid-template-columns:repeat(2,1fr)}
+  .hamburger{display:flex}
+
+  /* Hero */
+  #hero{height:100svh;min-height:580px}
+  .hero-content{padding:0 5vw 6vh}
+  .hero-tag{font-size:.58rem;letter-spacing:.22em;margin-bottom:1.2rem}
+  .hero-title{font-size:clamp(3.8rem,18vw,6rem)}
+  .hero-title .t2{-webkit-text-stroke:1.5px rgba(247,242,234,.8)}
+  .hero-bottom{flex-direction:column;align-items:flex-start;gap:1.8rem;margin-top:2rem}
+  .hero-meta{flex-direction:column;gap:.9rem}
+  .hm-item strong{font-size:.78rem}
+  .hero-btns{flex-direction:row;flex-wrap:wrap;gap:.6rem}
+  .btn-main,.btn-ghost{font-size:.5rem;padding:.7rem 1.4rem}
+  .hero-dots{right:5vw;bottom:10vh}
+  .scroll-hint{display:none}
+
+  /* Countdown */
+  .cd-bar{flex-wrap:wrap;justify-content:center;gap:0}
+  .cd-unit{padding:1rem 1.4rem}
+  .cd-n{font-size:2.2rem}
+  .cd-l{font-size:.44rem}
+  .cd-sep{display:none}
+  .cd-unit:not(:last-of-type)::after{font-size:1.6rem}
+
+  /* Marquee */
+  .mq-t span{font-size:.55rem;padding:0 1.2rem}
+
+  /* Sections */
+  section{padding:12vw 5vw}
+
+  /* About */
+  #about{gap:2.5rem}
+  .about-img{height:280px}
+  .about-img-badge{font-size:.48rem}
+  .sh{font-size:clamp(2rem,11vw,3.5rem)}
+  .about-text p{font-size:.88rem;margin-top:1.1rem}
+  .art-tags{gap:.4rem;margin-top:1.5rem}
+  .at{font-size:.44rem;padding:.35rem .75rem}
+  .about-stats{margin-top:1.5rem}
+  .astat-n{font-size:1.8rem}
+  .astat-l{font-size:.5rem}
+
+  /* Gallery strip */
   .gallery-strip{grid-template-columns:repeat(2,1fr)}
-  .hero-meta{flex-direction:column;gap:1rem}
-  .hero-bottom{flex-direction:column;align-items:flex-start;gap:1.5rem}
-  .manifesto-ctas{flex-direction:column;align-items:center}
-  .foot-grid{grid-template-columns:1fr}
+  .gs-item{aspect-ratio:4/5}
+
+  /* Festivals */
+  #festivals{padding-left:0;padding-right:0}
+  .fest-header{padding:12vw 5vw 0;margin-bottom:2rem;flex-direction:column;align-items:flex-start;gap:1.2rem}
+  .fest-scroll{padding:0 5vw 1.5rem;gap:12px}
+  .fcard{width:260px;height:380px}
+  .fcard-city{font-size:1.7rem}
+  .fcard-date{font-size:.58rem}
+
+  /* Lineup */
+  #lineup{padding:12vw 5vw}
+  .lp-top{flex-direction:column;align-items:flex-start;gap:1rem;margin-bottom:2rem}
+  .lp-filters{gap:.3rem}
+  .lf{font-size:.44rem;padding:.38rem .8rem}
+  .artist-row{grid-template-columns:36px 52px 1fr;gap:1rem;padding:1rem 0}
+  .artist-row:hover{padding-left:.5rem}
+  .ar-i{font-size:.75rem}
+  .ar-img{width:52px;height:52px}
+  .ar-name{font-size:clamp(.85rem,4vw,1.3rem)}
+  .ar-sub{font-size:.55rem}
+  .ar-r{display:none}
+
+  /* Program */
+  #program{padding:12vw 5vw}
+  .prog-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:0;-webkit-overflow-scrolling:touch}
+  .prog-tabs::-webkit-scrollbar{display:none}
+  .pt{font-size:.44rem;padding:.65rem 1rem;white-space:nowrap;flex-shrink:0}
+  .pe{grid-template-columns:60px 1fr;gap:.8rem;padding:1.1rem .5rem}
+  .pe-img,.pe-venue,.pe-badge{display:none}
+  .pe-time{font-size:.9rem}
+  .pe-title{font-size:.85rem}
+  .pe-sub{font-size:.55rem}
+  .pe:hover{padding-left:1rem}
+
+  /* Cities */
+  .cities-grid{grid-template-columns:repeat(2,1fr)}
+  .ctile{height:200px}
+  .ctile-name{font-size:1.1rem}
+  .ctile-year{font-size:.5rem}
+  .ctile.up::before{font-size:.38rem;padding:.18rem .45rem}
+
+  /* Gallery */
+  #gallery{padding:12vw 5vw}
+  .gallery-header{flex-direction:column;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+  .gallery-grid{grid-template-columns:1fr 1fr;gap:2px}
+  .gg-item.big{grid-row:span 1;height:220px !important}
+  .gg-item{height:160px !important}
+
+  /* Manifesto */
+  #manifesto{padding:14vw 5vw}
+  .manifesto-q{font-size:clamp(1.7rem,8vw,3rem)}
+  .manifesto-q em{-webkit-text-stroke:1.5px var(--accent)}
+  .manifesto-p{font-size:.82rem;margin-top:1.5rem}
+  .manifesto-ctas{flex-direction:column;align-items:center;gap:.7rem;margin-top:2rem}
+
+  /* Contact */
+  #contact{display:block}
+  .con-l,.con-r{padding:12vw 5vw}
+  .ci{padding:1.1rem 0}
+  .ci-icon{width:36px;height:36px;font-size:.9rem}
+  .ci-val{font-size:.8rem}
+  .soc{flex-wrap:wrap;gap:.5rem}
+  .sb{font-size:.44rem;padding:.5rem .9rem}
+  .f-group{gap:.8rem}
+  .f-inp,.f-ta{font-size:.82rem;padding:.75rem .9rem}
+
+  /* Footer */
+  .foot-grid{grid-template-columns:1fr;gap:2rem;padding:10vw 5vw}
+  .f-desc{max-width:100%}
+  .foot-bar{flex-direction:column;gap:.5rem;text-align:center;padding:1.2rem 5vw}
+  .f-col{display:none}
+  .foot-grid > div:first-child{display:block}
 }
 </style>
 </head>
@@ -309,8 +467,21 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamBtn" onclick="openMob()" aria-label="Menu"><span></span><span></span><span></span></button>
   <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Buy Tickets ↗</button>
 </nav>
+
+<!-- MOBILE NAV -->
+<div id="mob-nav">
+  <button class="mob-close" onclick="closeMob()">✕</button>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#festivals" onclick="closeMob()">Festival</a>
+  <a href="#lineup" onclick="closeMob()">Lineup</a>
+  <a href="#program" onclick="closeMob()">Program</a>
+  <a href="#gallery" onclick="closeMob()">Gallery</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="#contact" class="mob-cta" onclick="closeMob()">Buy Tickets ↗</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -863,6 +1034,19 @@ let isDown=false,startX,sl;
 fs.addEventListener('mousedown',e=>{isDown=true;startX=e.pageX-fs.offsetLeft;sl=fs.scrollLeft});
 document.addEventListener('mouseup',()=>isDown=false);
 fs.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();fs.scrollLeft=sl-(e.pageX-fs.offsetLeft-startX)*1.5});
+
+// Mobile nav
+function openMob(){document.getElementById("mob-nav").classList.add("open");document.body.style.overflow="hidden"}
+function closeMob(){document.getElementById("mob-nav").classList.remove("open");document.body.style.overflow=""}
+
+// Touch drag for festival scroll
+(function(){
+  const el=document.getElementById("festScroll");
+  let x0,sl0,dragging=false;
+  el.addEventListener("touchstart",e=>{x0=e.touches[0].clientX;sl0=el.scrollLeft;dragging=true},{passive:true});
+  el.addEventListener("touchmove",e=>{if(!dragging)return;el.scrollLeft=sl0-(e.touches[0].clientX-x0)*1},{passive:true});
+  el.addEventListener("touchend",()=>dragging=false);
+})();
 
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
