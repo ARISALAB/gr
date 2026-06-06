@@ -55,7 +55,12 @@ nav.stuck{background:rgba(6,5,4,.95);backdrop-filter:blur(16px);border-bottom:1p
 
 .hero-title{font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(4.5rem,13vw,11rem);line-height:.92;letter-spacing:-.025em;text-transform:uppercase;opacity:0;animation:slideUp 1s ease forwards .4s;overflow:visible}
 .hero-title .t1{display:block;color:var(--white)}
-.hero-title .t2{display:block;color:transparent;-webkit-text-stroke:2px rgba(247,242,234,.8);padding-bottom:.1em}
+.hero-title .t2{display:block;color:transparent;-webkit-text-stroke:2px rgba(247,242,234,.8);padding-bottom:.1em;position:relative}
+.hero-title .t2::before,.hero-title .t2::after{content:attr(data-text);position:absolute;top:0;left:0;-webkit-text-stroke:0}
+.hero-title .t2::before{color:var(--accent2);clip-path:inset(35% 0 48% 0);animation:glitch1 4s infinite}
+.hero-title .t2::after{color:var(--accent);clip-path:inset(62% 0 8% 0);animation:glitch2 4s infinite}
+@keyframes glitch1{0%,84%,100%{transform:translate(0);opacity:0}86%{transform:translate(-6px,2px);opacity:.75}88%{transform:translate(4px,-2px);opacity:.5}90%{transform:translate(0);opacity:0}}
+@keyframes glitch2{0%,87%,100%{transform:translate(0);opacity:0}89%{transform:translate(5px,3px);opacity:.65}91%{transform:translate(-3px,-2px);opacity:.4}93%{transform:translate(0);opacity:0}}
 .hero-title .ti{color:var(--accent);-webkit-text-stroke:0}
 
 .hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;margin-top:2.5rem;opacity:0;animation:slideUp .9s ease forwards .7s}
@@ -175,7 +180,7 @@ section{padding:7vw 4vw}
 .ar-img{width:64px;height:64px;overflow:hidden;flex-shrink:0}
 .ar-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(40%);transition:filter .3s}
 .artist-row:hover .ar-img img{filter:grayscale(0)}
-.ar-name{font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(1rem,2.5vw,1.8rem);text-transform:uppercase;letter-spacing:-.01em;line-height:1;transition:color .3s}
+.ar-name{font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(1rem,2.5vw,1.8rem);letter-spacing:-.01em;line-height:1;transition:color .3s}
 .artist-row:hover .ar-name{color:var(--accent)}
 .ar-sub{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-top:.3rem}
 .ar-r{display:flex;align-items:center;gap:1rem}
@@ -197,7 +202,7 @@ section{padding:7vw 4vw}
 .pe-img{width:56px;height:56px;overflow:hidden;flex-shrink:0}
 .pe-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(50%);transition:filter .3s}
 .pe:hover .pe-img img{filter:grayscale(0)}
-.pe-title{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:-.01em;line-height:1.1}
+.pe-title{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1rem;letter-spacing:-.01em;line-height:1.1}
 .pe-sub{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:.3rem}
 .pe-venue{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray);text-align:right}
 .pe-badge{font-family:'Unbounded',sans-serif;font-size:.45rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:.22rem .6rem;border:1px solid;justify-self:end}
@@ -343,10 +348,11 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
   .hero-content{
     display:flex;
     flex-direction:column;
-    justify-content:flex-end;
-    padding:0 5vw calc(env(safe-area-inset-bottom) + 6vh);
+    justify-content:space-between;
+    padding:calc(60px + 4vh) 5vw calc(env(safe-area-inset-bottom) + 5vh);
     width:100%;
     overflow:visible;
+    min-height:100svh;
   }
   .hero-tag{font-size:.55rem;letter-spacing:.2em;margin-bottom:1rem}
   .hero-title{
@@ -519,7 +525,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <div class="hero-tag"><span class="dot"></span>Greece As It Is &nbsp;·&nbsp; Berlin Oct 2025</div>
     <h1 class="hero-title">
       <span class="t1">GR<span class="ti">i</span>s</span>
-      <span class="t2">Festival</span>
+      <span class="t2" data-text="Festival">Festival</span>
     </h1>
     <div class="hero-bottom">
       <div class="hero-meta">
@@ -698,43 +704,43 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <div class="artist-row" data-cat="theater">
       <div class="ar-i">02</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="ar-name">Στη Σκιά των Ανθρώπων</div><div class="ar-sub">Music-Theater Performance</div></div>
+      <div><div class="ar-name">Στη Σκια των Ανθρωπων</div><div class="ar-sub">Music-Theater Performance</div></div>
       <div class="ar-r"><div class="ar-type">Theater</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="visual">
       <div class="ar-i">03</div>
       <div class="ar-img"><img src="https://grisfestival.com/wp-content/uploads/2025/06/01-570x696.jpeg" alt="" loading="lazy"></div>
-      <div><div class="ar-name">Εικαστική Απεικόνιση</div><div class="ar-sub">Η Μοναδικότητα στο Σύνολο · Group Exhibition</div></div>
+      <div><div class="ar-name">Εικαστικη Απεικονιση</div><div class="ar-sub">Η Μοναδικοτητα στο Συνολο · Group Exhibition</div></div>
       <div class="ar-r"><div class="ar-type">Visual Arts</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="music">
       <div class="ar-i">04</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="ar-name">Μάνος Πυροβολάκης | Κουρήτες</div><div class="ar-sub">Αφιέρωμα στην Κρήτη · Cretan Night Concert</div></div>
+      <div><div class="ar-name">Μανος Πυροβολακης | Κουρητες</div><div class="ar-sub">Αφιερωμα στην Κρητη · Cretan Night Concert</div></div>
       <div class="ar-r"><div class="ar-type">Music</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="music">
       <div class="ar-i">05</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="ar-name">Γιώργος Βαρσαμάκης</div><div class="ar-sub">Classical Music Evening</div></div>
+      <div><div class="ar-name">Γιωργος Βαρσαμακης</div><div class="ar-sub">Classical Music Evening</div></div>
       <div class="ar-r"><div class="ar-type">Music</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="poetry">
       <div class="ar-i">06</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="ar-name">Σάννυ Μπαλτζή & Γ. Βαρσαμάκης</div><div class="ar-sub">Workshop Ποίησης & Σύνθεσης</div></div>
+      <div><div class="ar-name">Σαννυ Μπαλτζη & Γ. Βαρσαμακης</div><div class="ar-sub">Workshop Ποιησης & Συνθεσης</div></div>
       <div class="ar-r"><div class="ar-type">Poetry</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="poetry">
       <div class="ar-i">07</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="ar-name">Από τον Κωστή Παλαμά στο Σήμερα</div><div class="ar-sub">Poetry Presentation & Discussion</div></div>
+      <div><div class="ar-name">Απο τον Κωστη Παλαμα στο Σημερα</div><div class="ar-sub">Poetry Presentation & Discussion</div></div>
       <div class="ar-r"><div class="ar-type">Poetry</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="visual">
       <div class="ar-i">08</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="ar-name">Ημερίδα Περιβάλλοντος</div><div class="ar-sub">Από την Παραγωγή στην Κατανάλωση</div></div>
+      <div><div class="ar-name">Ημεριδα Περιβαλλοντος</div><div class="ar-sub">Απο την Παραγωγη στην Καταναλωση</div></div>
       <div class="ar-r"><div class="ar-type">Talk</div><div class="ar-arr">→</div></div>
     </div>
   </div>
@@ -755,7 +761,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <div class="pe">
       <div class="pe-time">18:00</div>
       <div class="pe-img"><img src="https://grisfestival.com/wp-content/uploads/2025/06/4-570x696.jpg" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Εικαστική Απεικόνιση — Opening</div><div class="pe-sub">Group Painting Exhibition · Vernissage</div></div>
+      <div><div class="pe-title">Εικαστικη Απεικονιση — Opening</div><div class="pe-sub">Group Painting Exhibition · Vernissage</div></div>
       <div class="pe-venue">Gallery · Berlin</div>
       <div class="pe-badge free">Free</div>
     </div>
@@ -778,7 +784,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <div class="pe">
       <div class="pe-time">20:30</div>
       <div class="pe-img"><img src="https://grisfestival.com/wp-content/uploads/2025/06/01-570x696.jpeg" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Exhibition Open Hours</div><div class="pe-sub">Εικαστική Απεικόνιση · Guided Tour</div></div>
+      <div><div class="pe-title">Exhibition Open Hours</div><div class="pe-sub">Εικαστικη Απεικονιση · Guided Tour</div></div>
       <div class="pe-venue">Gallery</div>
       <div class="pe-badge free">Free</div>
     </div>
@@ -787,14 +793,14 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <div class="pe">
       <div class="pe-time">17:00</div>
       <div class="pe-img"><img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Workshop Ποίησης & Σύνθεσης</div><div class="pe-sub">Σάννυ Μπαλτζή, Γιώργος Βαρσαμάκης</div></div>
+      <div><div class="pe-title">Workshop Ποιησης & Συνθεσης</div><div class="pe-sub">Σαννυ Μπαλτζη, Γιωργος Βαρσαμακης</div></div>
       <div class="pe-venue">Workshop Room</div>
       <div class="pe-badge ticket">Ticketed</div>
     </div>
     <div class="pe">
       <div class="pe-time">20:30</div>
       <div class="pe-img"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Στη Σκιά των Ανθρώπων</div><div class="pe-sub">Music-Theater Performance</div></div>
+      <div><div class="pe-title">Στη Σκια των Ανθρωπων</div><div class="pe-sub">Music-Theater Performance</div></div>
       <div class="pe-venue">Main Stage</div>
       <div class="pe-badge main">Headliner</div>
     </div>
@@ -803,14 +809,14 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <div class="pe">
       <div class="pe-time">11:00</div>
       <div class="pe-img"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Ημερίδα Περιβάλλοντος</div><div class="pe-sub">Από την Παραγωγή στην Κατανάλωση</div></div>
+      <div><div class="pe-title">Ημεριδα Περιβαλλοντος</div><div class="pe-sub">Απο την Παραγωγη στην Καταναλωση</div></div>
       <div class="pe-venue">Conference</div>
       <div class="pe-badge free">Free</div>
     </div>
     <div class="pe">
       <div class="pe-time">19:00</div>
       <div class="pe-img"><img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Γιώργος Βαρσαμάκης</div><div class="pe-sub">Classical Music Evening</div></div>
+      <div><div class="pe-title">Γιωργος Βαρσαμακης</div><div class="pe-sub">Classical Music Evening</div></div>
       <div class="pe-venue">Chamber Hall</div>
       <div class="pe-badge ticket">Ticketed</div>
     </div>
@@ -819,14 +825,14 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <div class="pe">
       <div class="pe-time">18:00</div>
       <div class="pe-img"><img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Από τον Κωστή Παλαμά στο Σήμερα</div><div class="pe-sub">Poetry Presentation & Discussion</div></div>
+      <div><div class="pe-title">Απο τον Κωστη Παλαμα στο Σημερα</div><div class="pe-sub">Poetry Presentation & Discussion</div></div>
       <div class="pe-venue">Lecture Hall</div>
       <div class="pe-badge free">Free</div>
     </div>
     <div class="pe">
       <div class="pe-time">21:00</div>
       <div class="pe-img"><img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Αφιέρωμα στην Κρήτη</div><div class="pe-sub">Μάνος Πυροβολάκης | Κουρήτες · Cretan Evening</div></div>
+      <div><div class="pe-title">Αφιερωμα στην Κρητη</div><div class="pe-sub">Μανος Πυροβολακης | Κουρητες · Cretan Evening</div></div>
       <div class="pe-venue">Main Stage</div>
       <div class="pe-badge main">Headliner</div>
     </div>
