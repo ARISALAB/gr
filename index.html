@@ -476,6 +476,40 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
   .f-col{display:none}
   .foot-grid > div:first-child{display:block}
 }
+
+/* MEDIA CARDS */
+.media-card{
+  background:var(--dim);
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:2rem 1.8rem;
+  text-decoration:none;
+  position:relative;overflow:hidden;
+  transition:background .3s;
+  min-height:160px;
+  cursor:none;
+}
+.media-card:hover{background:var(--mid)}
+.media-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:2px;background:var(--accent);
+  transform:scaleY(0);transform-origin:bottom;transition:transform .3s;
+}
+.media-card:hover::before{transform:scaleY(1)}
+.mc-source{
+  font-family:'Unbounded',sans-serif;font-weight:700;font-size:.55rem;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:.8rem;
+}
+.mc-title{
+  font-size:.82rem;line-height:1.6;color:var(--white);
+  font-weight:300;flex:1;
+}
+.mc-arrow{
+  font-size:1.2rem;color:var(--gray);margin-top:1.2rem;
+  align-self:flex-end;transition:color .2s,transform .2s;
+}
+.media-card:hover .mc-arrow{color:var(--accent);transform:translate(3px,-3px)}
+
 </style>
 </head>
 <body>
@@ -493,6 +527,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <li><a href="#teaser">Teaser</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#auspices">Auspices & Sponsors</a></li>
+    <li><a href="#media">Media</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamBtn" onclick="openMob()" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -509,6 +544,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
   <a href="#teaser" onclick="closeMob()">Teaser</a>
   <a href="#gallery" onclick="closeMob()">Gallery</a>
   <a href="#auspices" onclick="closeMob()">Auspices & Sponsors</a>
+  <a href="#media" onclick="closeMob()">Media</a>
   <a href="#contact" onclick="closeMob()">Contact</a>
   <a href="#contact" class="mob-cta" onclick="closeMob()">Buy Tickets ↗</a>
 </div>
@@ -837,6 +873,68 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <div style="margin-top:3rem;padding:3rem;border:1px solid rgba(255,255,255,.07);text-align:center;color:rgba(255,255,255,.2)">
       <div style="font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem">Coming Soon</div>
       <div style="font-size:.75rem;letter-spacing:.15em">Auspices · Partners · Sponsors</div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA LINKS -->
+<section id="media" style="background:var(--black)">
+  <div class="reveal">
+    <div class="sl">Press Coverage</div>
+    <h2 class="sh">Media Links</h2>
+    <p style="font-size:.9rem;line-height:1.9;color:rgba(247,242,234,.45);margin-top:1.2rem;max-width:560px;margin-bottom:3rem">
+      GRis Festival as covered by leading media outlets across Greece and internationally.
+    </p>
+    <div id="media-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:rgba(255,255,255,.06)">
+
+      <a href="https://www.cnn.gr/style/politismos/story/413363/gris-festival-ellinikos-politismos-me-theatro-sofia-vempo-kai-konstantino-vita-sti-nea-yorki" target="_blank" class="media-card">
+        <div class="mc-source">CNN Greece</div>
+        <div class="mc-title">GRis Festival: Ελληνικος πολιτισμος με θεατρο, Σοφια Βεμπο και Κωνσταντινο Βιτα στη Νεα Υορκη</div>
+        <div class="mc-arrow">↗</div>
+      </a>
+
+      <a href="https://www.thenationalherald.com/gris-festival-presents-the-richness-of-greek-culture-in-new-york-april-12-21/" target="_blank" class="media-card">
+        <div class="mc-source">The National Herald</div>
+        <div class="mc-title">GRis Festival Presents the Richness of Greek Culture in New York April 12–21</div>
+        <div class="mc-arrow">↗</div>
+      </a>
+
+      <a href="https://www.thenationalherald.com/reception-for-the-gris-festival-hosted-by-the-consul-general-of-greece-in-new-york/" target="_blank" class="media-card">
+        <div class="mc-source">The National Herald</div>
+        <div class="mc-title">Reception for the GRis Festival Hosted by the Consul General of Greece in New York</div>
+        <div class="mc-arrow">↗</div>
+      </a>
+
+      <a href="https://www.ertnews.gr/omogeneia/to-gris-festival-2025-paei-sto-verolino/" target="_blank" class="media-card">
+        <div class="mc-source">ERT News</div>
+        <div class="mc-title">Το GRis Festival 2025 παει στο Βερολινο</div>
+        <div class="mc-arrow">↗</div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=rEqn2JgKTQE" target="_blank" class="media-card">
+        <div class="mc-source">YouTube — Naytemporiki</div>
+        <div class="mc-title">GRis Festival — Naytemporiki Video Report</div>
+        <div class="mc-arrow">↗</div>
+      </a>
+
+      <a href="https://www.athensvoice.gr/politismos/more-in-culture/874311/gris-festival-poia-einai-i-ellada-simera/" target="_blank" class="media-card">
+        <div class="mc-source">Athens Voice</div>
+        <div class="mc-title">GRis Festival: Ποια ειναι η Ελλαδα σημερα;</div>
+        <div class="mc-arrow">↗</div>
+      </a>
+
+      <a href="https://www.ant1live.com/zoi/politismos/591183_gris-festival-i-ellada-toy-simera-sti-leykosia" target="_blank" class="media-card">
+        <div class="mc-source">ANT1 Live</div>
+        <div class="mc-title">GRis Festival: Η Ελλαδα του σημερα στη Λευκωσια</div>
+        <div class="mc-arrow">↗</div>
+      </a>
+
+      <a href="https://www.philenews.com/politismos/kipros-politismos/article/1480386/mousiki-ke-theatro-stin-1i-diorganosi-tou-grisfestival-stin-kipro/" target="_blank" class="media-card">
+        <div class="mc-source">Phile News</div>
+        <div class="mc-title">Μουσικη και θεατρο στην 1η διοργανωση του GRis Festival στην Κυπρο</div>
+        <div class="mc-arrow">↗</div>
+      </a>
+
     </div>
   </div>
 </section>
