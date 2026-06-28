@@ -487,10 +487,11 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
   <a href="#" class="logo">GR<em>i</em>s Festival</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#festivals">Festival</a></li>
+    <li><a href="#festivals">Festivals</a></li>
     <li><a href="#lineup">Lineup</a></li>
-    <li><a href="#program">Program</a></li>
+    <li><a href="#artists">Artists</a></li>
     <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#auspices">Auspices & Sponsors</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="hamburger" id="hamBtn" onclick="openMob()" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -501,10 +502,11 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
 <div id="mob-nav">
   <button class="mob-close" onclick="closeMob()">✕</button>
   <a href="#about" onclick="closeMob()">About</a>
-  <a href="#festivals" onclick="closeMob()">Festival</a>
+  <a href="#festivals" onclick="closeMob()">Festivals</a>
   <a href="#lineup" onclick="closeMob()">Lineup</a>
-  <a href="#program" onclick="closeMob()">Program</a>
+  <a href="#artists" onclick="closeMob()">Artists</a>
   <a href="#gallery" onclick="closeMob()">Gallery</a>
+  <a href="#auspices" onclick="closeMob()">Auspices & Sponsors</a>
   <a href="#contact" onclick="closeMob()">Contact</a>
   <a href="#contact" class="mob-cta" onclick="closeMob()">Buy Tickets ↗</a>
 </div>
@@ -513,26 +515,26 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
 <section id="hero">
   <!-- Slideshow: real GRis photos + free Unsplash festival images -->
   <div class="hero-slides">
-    <div class="hero-slide on" style="background-image:url('https://grisfestival.com/wp-content/uploads/2025/06/01.jpeg');background-position:center 20%"></div>
+    <div class="hero-slide on" style="background-image:url('rena.jpg');background-position:center 25%"></div>
     <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1600&q=80')"></div>
-    <div class="hero-slide" style="background-image:url('https://grisfestival.com/wp-content/uploads/2025/06/3.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80')"></div>
-    <div class="hero-slide" style="background-image:url('https://grisfestival.com/wp-content/uploads/2025/06/5-scaled.jpg');background-position:center top"></div>
+    <div class="hero-slide" style="background-image:url('ypogeia_hero.jpg');background-position:center 30%"></div>
+    <div class="hero-slide" style="background-image:url('ypogeia2.jpg');background-position:center 40%"></div>
+    <div class="hero-slide" style="background-image:url('ypogeia3.jpg');background-position:center 35%"></div>
   </div>
   <div class="hero-grad"></div>
   <div class="hero-grad2"></div>
 
   <div class="hero-content">
-    <div class="hero-tag"><span class="dot"></span>Greece As It Is &nbsp;·&nbsp; Berlin Oct 2025</div>
+    <div class="hero-tag"><span class="dot"></span>Greece As It Is &nbsp;·&nbsp; Athens · London · Berlin 2026</div>
     <h1 class="hero-title">
       <span class="t1">GR<span class="ti">is</span></span>
       <span class="t2" data-text="Festival">Festival</span>
     </h1>
     <div class="hero-bottom">
       <div class="hero-meta">
-        <div class="hm-item"><span>Next Stop</span><strong>Berlin 2025</strong></div>
-        <div class="hm-item"><span>Dates</span><strong>14 – 19 Oct</strong></div>
-        <div class="hm-item"><span>Arts</span><strong>Music · Theater · Dance · Visual</strong></div>
+        <div class="hm-item"><span>Next Stop</span><strong>Athens · London · Berlin</strong></div>
+        <div class="hm-item"><span>Dates</span><strong>8 Sep – 15 Nov 2026</strong></div>
+        <div class="hm-item"><span>Arts</span><strong>Visual · Music · Theatre · Fashion · Dance</strong></div>
       </div>
       <div class="hero-btns">
         <a href="#lineup" class="btn-main">Explore Lineup ↓</a>
@@ -555,9 +557,6 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
   </div>
 </section>
 
-<!-- COUNTDOWN -->
-<div class="cd-bar">
-  <div class="cd-unit"><div class="cd-n" id="d">00</div><div class="cd-l">Days</div></div>
   <div class="cd-unit"><div class="cd-n" id="h">00</div><div class="cd-l">Hours</div></div>
   <div class="cd-unit"><div class="cd-n" id="m">00</div><div class="cd-l">Minutes</div></div>
   <div class="cd-unit"><div class="cd-n" id="s">00</div><div class="cd-l">Seconds</div></div>
@@ -566,14 +565,14 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
 
 <!-- MARQUEE -->
 <div class="mq"><div class="mq-t">
-  <span class="hi">GR<em>is</em> Festival</span><span>Music</span><span>Theater</span><span>Dance</span><span>Visual Arts</span><span>Photography</span><span>Film</span><span class="hi">Greece As It Is</span><span>Berlin 2025</span><span>Thessaloniki 2025</span><span>Athens 2024</span><span>New York 2024</span>
-  <span class="hi">GR<em>is</em> Festival</span><span>Music</span><span>Theater</span><span>Dance</span><span>Visual Arts</span><span>Photography</span><span>Film</span><span class="hi">Greece As It Is</span><span>Berlin 2025</span><span>Thessaloniki 2025</span><span>Athens 2024</span><span>New York 2024</span>
+  <span class="hi">GR<em>is</em> Festival</span><span>Music</span><span>Theater</span><span>Dance</span><span>Visual Arts</span><span>Photography</span><span>Film</span><span class="hi">Greece As It Is</span><span>Athens 2026</span><span>London 2026</span><span>Berlin 2026</span><span>Sep – Nov 2026</span>
+  <span class="hi">GR<em>is</em> Festival</span><span>Music</span><span>Theater</span><span>Dance</span><span>Visual Arts</span><span>Photography</span><span>Film</span><span class="hi">Greece As It Is</span><span>Athens 2026</span><span>London 2026</span><span>Berlin 2026</span><span>Sep – Nov 2026</span>
 </div></div>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="about-img reveal-l">
-    <img src="https://grisfestival.com/wp-content/uploads/2025/06/2.jpg" alt="GRis Festival performance" loading="lazy">
+    <img src="ypogeia1.jpg" alt="GRis Festival - Υπόγεια Ρεύματα ΜΜΘ" loading="lazy">
     <div class="about-img-badge">Greece As It Is</div>
   </div>
   <div class="reveal">
@@ -589,19 +588,18 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
       <div class="at"><span>📷 Photography</span></div>
       <div class="at"><span>🎬 Film</span></div>
     </div>
-    <div class="about-stats">
-      <div class="astat"><div class="astat-n">5+</div><div class="astat-l">Cities</div></div>
-      <div class="astat"><div class="astat-n">50+</div><div class="astat-l">Artists</div></div>
-      <div class="astat"><div class="astat-n">6</div><div class="astat-l">Art Forms</div></div>
-    </div>
+
   </div>
 </section>
 
 <!-- GALLERY STRIP -->
 <div class="gallery-strip">
-  <div class="gs-item">
-    <img src="https://grisfestival.com/wp-content/uploads/2025/06/4-570x696.jpg" alt="GRis Festival" loading="lazy">
-    <div class="gs-label">Athens 2024</div>
+  <div class="gs-item"><img src="rena.jpg" alt="Ρένα" loading="lazy"><div class="gs-label">Music</div></div>
+  <div class="gs-item"><img src="ypogeia_hero.jpg" alt="GRis Festival" loading="lazy"><div class="gs-label">Theatre</div></div>
+  <div class="gs-item"><img src="gallery3.jpg" alt="GRis Festival" loading="lazy"><div class="gs-label">Dance</div></div>
+  <div class="gs-item"><img src="gallery4.jpg" alt="GRis Festival" loading="lazy"><div class="gs-label">Visual Arts</div></div>
+  <div class="gs-item"><img src="ypogeia2.jpg" alt="GRis Festival" loading="lazy"><div class="gs-label">Athens 2024</div></div>
+</div>
   </div>
   <div class="gs-item">
     <img src="https://grisfestival.com/wp-content/uploads/2025/06/6-570x696.jpg" alt="GRis Festival" loading="lazy">
@@ -629,16 +627,36 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
   </div>
   <div class="fest-scroll" id="festScroll">
     <div class="fcard next">
+      <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" alt="Athens" loading="lazy">
+      <div class="fcard-grad"></div>
+      <div class="fcard-content">
+        <div class="fcard-badge">Coming Soon</div>
+        <div class="fcard-line"></div>
+        <div class="fcard-city">Athens</div>
+        <div class="fcard-date">2026 · Greece</div>
+      </div>
+    </div>
+    <div class="fcard next">
+      <img src="https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=600&q=80" alt="London" loading="lazy">
+      <div class="fcard-grad"></div>
+      <div class="fcard-content">
+        <div class="fcard-badge">Coming Soon</div>
+        <div class="fcard-line"></div>
+        <div class="fcard-city">London</div>
+        <div class="fcard-date">2026 · United Kingdom</div>
+      </div>
+    </div>
+    <div class="fcard next">
       <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=80" alt="Berlin" loading="lazy">
       <div class="fcard-grad"></div>
       <div class="fcard-content">
         <div class="fcard-badge">Coming Soon</div>
         <div class="fcard-line"></div>
         <div class="fcard-city">Berlin</div>
-        <div class="fcard-date">14 – 19 October 2025 · Germany</div>
+        <div class="fcard-date">2026 · Germany</div>
       </div>
     </div>
-    <div class="fcard next">
+    <div class="fcard">
       <img src="https://images.unsplash.com/photo-1591471937631-2f64a5e7f4ef?w=600&q=80" alt="Thessaloniki" loading="lazy">
       <div class="fcard-grad"></div>
       <div class="fcard-content">
@@ -649,13 +667,23 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
       </div>
     </div>
     <div class="fcard">
-      <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" alt="Athens" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=80" alt="Berlin 2025" loading="lazy">
+      <div class="fcard-grad"></div>
+      <div class="fcard-content">
+        <div class="fcard-badge">2025</div>
+        <div class="fcard-line"></div>
+        <div class="fcard-city">Berlin</div>
+        <div class="fcard-date">Oct 2025 · Germany</div>
+      </div>
+    </div>
+    <div class="fcard">
+      <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" alt="Athens 2024" loading="lazy">
       <div class="fcard-grad"></div>
       <div class="fcard-content">
         <div class="fcard-badge">2024</div>
         <div class="fcard-line"></div>
         <div class="fcard-city">Athens</div>
-        <div class="fcard-date">Oct – Nov 2024 · Greece</div>
+        <div class="fcard-date">Oct–Nov 2024 · Greece</div>
       </div>
     </div>
     <div class="fcard">
@@ -684,7 +712,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
 <!-- LINEUP -->
 <section id="lineup">
   <div class="lp-top reveal">
-    <div><div class="sl">Berlin 2025</div><h2 class="sh">Lineup</h2></div>
+    <div><div class="sl">Athens · London · Berlin 2026</div><h2 class="sh">Lineup</h2></div>
     <a href="#" class="btn-ghost">Full Lineup →</a>
   </div>
   <div class="lp-filters reveal">
@@ -697,49 +725,49 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
   </div>
   <div id="alist" class="reveal">
     <div class="artist-row" data-cat="music">
-      <div class="ar-i">01</div>
+      <div class="ar-i">TBA</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=120&q=80" alt="" loading="lazy"></div>
       <div><div class="ar-name">Grey River & The Smoky Mountain</div><div class="ar-sub">Folk Music · Headliner</div></div>
       <div class="ar-r"><div class="ar-type">Music</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="theater">
-      <div class="ar-i">02</div>
+      <div class="ar-i">TBA</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=120&q=80" alt="" loading="lazy"></div>
       <div><div class="ar-name">Στη Σκιά των Ανθρώπων</div><div class="ar-sub">Music-Theater Performance</div></div>
       <div class="ar-r"><div class="ar-type">Theater</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="visual">
-      <div class="ar-i">03</div>
+      <div class="ar-i">TBA</div>
       <div class="ar-img"><img src="https://grisfestival.com/wp-content/uploads/2025/06/01-570x696.jpeg" alt="" loading="lazy"></div>
       <div><div class="ar-name">Εικαστική Απεικόνιση</div><div class="ar-sub">Η Μοναδικότητα στο Σύνολο · Group Exhibition</div></div>
       <div class="ar-r"><div class="ar-type">Visual Arts</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="music">
-      <div class="ar-i">04</div>
+      <div class="ar-i">TBA</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=120&q=80" alt="" loading="lazy"></div>
       <div><div class="ar-name">Μάνος Πυροβολάκης | Κουρήτες</div><div class="ar-sub">Αφιέρωμα στην Κρήτη · Cretan Night Concert</div></div>
       <div class="ar-r"><div class="ar-type">Music</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="music">
-      <div class="ar-i">05</div>
+      <div class="ar-i">TBA</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=120&q=80" alt="" loading="lazy"></div>
       <div><div class="ar-name">Γιώργος Βαρσαμάκης</div><div class="ar-sub">Classical Music Evening</div></div>
       <div class="ar-r"><div class="ar-type">Music</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="poetry">
-      <div class="ar-i">06</div>
+      <div class="ar-i">TBA</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=120&q=80" alt="" loading="lazy"></div>
       <div><div class="ar-name">Σάννυ Μπαλτζή & Γ. Βαρσαμάκης</div><div class="ar-sub">Workshop Ποίησης & Σύνθεσης</div></div>
       <div class="ar-r"><div class="ar-type">Poetry</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="poetry">
-      <div class="ar-i">07</div>
+      <div class="ar-i">TBA</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=120&q=80" alt="" loading="lazy"></div>
       <div><div class="ar-name">Από τον Κωστή Παλαμά στο Σήμερα</div><div class="ar-sub">Poetry Presentation & Discussion</div></div>
       <div class="ar-r"><div class="ar-type">Poetry</div><div class="ar-arr">→</div></div>
     </div>
     <div class="artist-row" data-cat="visual">
-      <div class="ar-i">08</div>
+      <div class="ar-i">TBA</div>
       <div class="ar-img"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=120&q=80" alt="" loading="lazy"></div>
       <div><div class="ar-name">Ημερίδα Περιβάλλοντος</div><div class="ar-sub">Από την Παραγωγή στην Κατανάλωση</div></div>
       <div class="ar-r"><div class="ar-type">Talk</div><div class="ar-arr">→</div></div>
@@ -747,135 +775,66 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
   </div>
 </section>
 
-<!-- PROGRAM -->
-<section id="program">
-  <div class="reveal" style="margin-bottom:2.5rem"><div class="sl">Schedule</div><h2 class="sh">Program<br>Berlin 2025</h2></div>
-  <div class="prog-tabs reveal">
-    <button class="pt on" onclick="sp(this,'pp1')">Thu 14/10</button>
-    <button class="pt" onclick="sp(this,'pp2')">Fri 15/10</button>
-    <button class="pt" onclick="sp(this,'pp3')">Sat 16/10</button>
-    <button class="pt" onclick="sp(this,'pp4')">Sun 17/10</button>
-    <button class="pt" onclick="sp(this,'pp5')">Mon 18/10</button>
-    <button class="pt" onclick="sp(this,'pp6')">Tue 19/10</button>
-  </div>
-  <div id="pp1" class="prog-panel on reveal">
-    <div class="pe">
-      <div class="pe-time">18:00</div>
-      <div class="pe-img"><img src="https://grisfestival.com/wp-content/uploads/2025/06/4-570x696.jpg" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Εικαστική Απεικόνιση — Opening</div><div class="pe-sub">Group Painting Exhibition · Vernissage</div></div>
-      <div class="pe-venue">Gallery · Berlin</div>
-      <div class="pe-badge free">Free</div>
-    </div>
-    <div class="pe">
-      <div class="pe-time">20:30</div>
-      <div class="pe-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">GR<em>is</em> Festival Berlin — Opening Night</div><div class="pe-sub">Welcome Address & Presentations</div></div>
-      <div class="pe-venue">Main Hall</div>
-      <div class="pe-badge main">Opening</div>
-    </div>
-  </div>
-  <div id="pp2" class="prog-panel reveal">
-    <div class="pe">
-      <div class="pe-time">18:00</div>
-      <div class="pe-img"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">HOME — Grey River & The Smoky Mountain</div><div class="pe-sub">Folk Music Live Concert</div></div>
-      <div class="pe-venue">Stage A</div>
-      <div class="pe-badge ticket">Ticketed</div>
-    </div>
-    <div class="pe">
-      <div class="pe-time">20:30</div>
-      <div class="pe-img"><img src="https://grisfestival.com/wp-content/uploads/2025/06/01-570x696.jpeg" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Exhibition Open Hours</div><div class="pe-sub">Εικαστική Απεικόνιση · Guided Tour</div></div>
-      <div class="pe-venue">Gallery</div>
-      <div class="pe-badge free">Free</div>
-    </div>
-  </div>
-  <div id="pp3" class="prog-panel reveal">
-    <div class="pe">
-      <div class="pe-time">17:00</div>
-      <div class="pe-img"><img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Workshop Ποίησης & Σύνθεσης</div><div class="pe-sub">Σάννυ Μπαλτζή, Γιώργος Βαρσαμάκης</div></div>
-      <div class="pe-venue">Workshop Room</div>
-      <div class="pe-badge ticket">Ticketed</div>
-    </div>
-    <div class="pe">
-      <div class="pe-time">20:30</div>
-      <div class="pe-img"><img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Στη Σκιά των Ανθρώπων</div><div class="pe-sub">Music-Theater Performance</div></div>
-      <div class="pe-venue">Main Stage</div>
-      <div class="pe-badge main">Headliner</div>
-    </div>
-  </div>
-  <div id="pp4" class="prog-panel reveal">
-    <div class="pe">
-      <div class="pe-time">11:00</div>
-      <div class="pe-img"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Ημερίδα Περιβάλλοντος</div><div class="pe-sub">Από την Παραγωγή στην Κατανάλωση</div></div>
-      <div class="pe-venue">Conference</div>
-      <div class="pe-badge free">Free</div>
-    </div>
-    <div class="pe">
-      <div class="pe-time">19:00</div>
-      <div class="pe-img"><img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Γιώργος Βαρσαμάκης</div><div class="pe-sub">Classical Music Evening</div></div>
-      <div class="pe-venue">Chamber Hall</div>
-      <div class="pe-badge ticket">Ticketed</div>
-    </div>
-  </div>
-  <div id="pp5" class="prog-panel reveal">
-    <div class="pe">
-      <div class="pe-time">18:00</div>
-      <div class="pe-img"><img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Από τον Κωστή Παλαμά στο Σήμερα</div><div class="pe-sub">Poetry Presentation & Discussion</div></div>
-      <div class="pe-venue">Lecture Hall</div>
-      <div class="pe-badge free">Free</div>
-    </div>
-    <div class="pe">
-      <div class="pe-time">21:00</div>
-      <div class="pe-img"><img src="https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Αφιέρωμα στην Κρήτη</div><div class="pe-sub">Μάνος Πυροβολάκης | Κουρήτες · Cretan Evening</div></div>
-      <div class="pe-venue">Main Stage</div>
-      <div class="pe-badge main">Headliner</div>
-    </div>
-  </div>
-  <div id="pp6" class="prog-panel reveal">
-    <div class="pe">
-      <div class="pe-time">19:00</div>
-      <div class="pe-img"><img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=120&q=80" alt="" loading="lazy"></div>
-      <div><div class="pe-title">Closing Night — GR<em>is</em> Berlin 2025</div><div class="pe-sub">Final Performances · Awards · Celebration</div></div>
-      <div class="pe-venue">All Venues</div>
-      <div class="pe-badge main">Closing</div>
-    </div>
-  </div>
-</section>
+
 
 <!-- CITIES -->
 <section id="cities" style="padding:0">
   <div class="cities-grid">
     <div class="ctile up">
-      <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=80" alt="Berlin" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" alt="Athens" loading="lazy">
       <div class="ctile-grad"></div>
-      <div class="ctile-content"><div class="ctile-name">Berlin</div><div class="ctile-year">Oct 2025</div></div>
+      <div class="ctile-content"><div class="ctile-name">Athens</div><div class="ctile-year">2026</div></div>
     </div>
     <div class="ctile up">
+      <img src="https://images.unsplash.com/photo-1486299267070-83823f5448dd?w=600&q=80" alt="London" loading="lazy">
+      <div class="ctile-grad"></div>
+      <div class="ctile-content"><div class="ctile-name">London</div><div class="ctile-year">2026</div></div>
+    </div>
+    <div class="ctile up">
+      <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=80" alt="Berlin" loading="lazy">
+      <div class="ctile-grad"></div>
+      <div class="ctile-content"><div class="ctile-name">Berlin</div><div class="ctile-year">2026</div></div>
+    </div>
+    <div class="ctile">
       <img src="https://images.unsplash.com/photo-1591471937631-2f64a5e7f4ef?w=600&q=80" alt="Thessaloniki" loading="lazy">
       <div class="ctile-grad"></div>
       <div class="ctile-content"><div class="ctile-name">Thessaloniki</div><div class="ctile-year">2025</div></div>
-    </div>
-    <div class="ctile">
-      <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" alt="Athens" loading="lazy">
-      <div class="ctile-grad"></div>
-      <div class="ctile-content"><div class="ctile-name">Athens</div><div class="ctile-year">2024</div></div>
     </div>
     <div class="ctile">
       <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=600&q=80" alt="New York" loading="lazy">
       <div class="ctile-grad"></div>
       <div class="ctile-content"><div class="ctile-name">New York</div><div class="ctile-year">2024</div></div>
     </div>
-    <div class="ctile">
-      <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=600&q=80" alt="Nicosia" loading="lazy">
-      <div class="ctile-grad"></div>
-      <div class="ctile-content"><div class="ctile-name">Nicosia</div><div class="ctile-year">2024</div></div>
+  </div>
+</section>
+
+
+<!-- ARTISTS -->
+<section id="artists">
+  <div class="reveal">
+    <div class="sl">Performers</div>
+    <h2 class="sh">Artists</h2>
+    <p style="font-size:.95rem;line-height:1.9;color:rgba(247,242,234,.5);margin-top:1.5rem;max-width:600px">
+      Artist profiles with photo and CV coming soon. Each artist will have a dedicated page with biography, portfolio, and upcoming performances.
+    </p>
+    <div style="margin-top:3rem;padding:3rem;border:1px solid rgba(255,255,255,.07);text-align:center;color:rgba(255,255,255,.2)">
+      <div style="font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem">Coming Soon</div>
+      <div style="font-size:.75rem;letter-spacing:.15em">Full artist roster · Athens · London · Berlin 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- AUSPICES & SPONSORS -->
+<section id="auspices" style="background:var(--dim)">
+  <div class="reveal">
+    <div class="sl">Support</div>
+    <h2 class="sh">Auspices &<br>Sponsors</h2>
+    <p style="font-size:.95rem;line-height:1.9;color:rgba(247,242,234,.5);margin-top:1.5rem;max-width:600px">
+      Logos and information about our supporting organizations and sponsors coming soon.
+    </p>
+    <div style="margin-top:3rem;padding:3rem;border:1px solid rgba(255,255,255,.07);text-align:center;color:rgba(255,255,255,.2)">
+      <div style="font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem">Coming Soon</div>
+      <div style="font-size:.75rem;letter-spacing:.15em">Auspices · Partners · Sponsors</div>
     </div>
   </div>
 </section>
@@ -888,35 +847,35 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
   </div>
   <div class="gallery-grid">
     <div class="gg-item big" style="height:600px">
-      <img src="https://grisfestival.com/wp-content/uploads/2025/06/01.jpeg" alt="GRis Festival" loading="lazy">
+      <img src="ypogeia1.jpg" alt="GRis Festival - Υπόγεια Ρεύματα" loading="lazy">
       <div class="gg-over"><div class="gg-plus">+</div></div>
     </div>
     <div class="gg-item" style="height:299px">
-      <img src="https://grisfestival.com/wp-content/uploads/2025/06/2.jpg" alt="GRis Festival" loading="lazy">
+      <img src="gallery1.jpg" alt="GRis Festival" loading="lazy">
       <div class="gg-over"><div class="gg-plus">+</div></div>
     </div>
     <div class="gg-item" style="height:299px">
-      <img src="https://grisfestival.com/wp-content/uploads/2025/06/3.jpg" alt="GRis Festival" loading="lazy">
+      <img src="gallery2.jpg" alt="GRis Festival" loading="lazy">
       <div class="gg-over"><div class="gg-plus">+</div></div>
     </div>
     <div class="gg-item" style="height:299px">
-      <img src="https://grisfestival.com/wp-content/uploads/2025/06/4-570x696.jpg" alt="GRis Festival" loading="lazy">
+      <img src="gallery3.jpg" alt="GRis Festival" loading="lazy">
       <div class="gg-over"><div class="gg-plus">+</div></div>
     </div>
     <div class="gg-item" style="height:299px">
-      <img src="https://grisfestival.com/wp-content/uploads/2025/06/5-scaled.jpg" alt="GRis Festival" loading="lazy">
+      <img src="gallery4.jpg" alt="GRis Festival" loading="lazy">
       <div class="gg-over"><div class="gg-plus">+</div></div>
     </div>
     <div class="gg-item" style="height:299px">
-      <img src="https://grisfestival.com/wp-content/uploads/2025/06/6.jpg" alt="GRis Festival" loading="lazy">
+      <img src="ypogeia2.jpg" alt="GRis Festival" loading="lazy">
       <div class="gg-over"><div class="gg-plus">+</div></div>
     </div>
     <div class="gg-item" style="height:299px">
-      <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80" alt="Festival" loading="lazy">
+      <img src="ypogeia3.jpg" alt="GRis Festival" loading="lazy">
       <div class="gg-over"><div class="gg-plus">+</div></div>
     </div>
     <div class="gg-item" style="height:299px">
-      <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600&q=80" alt="Festival" loading="lazy">
+      <img src="rena.jpg" alt="GRis Festival - Ρένα" loading="lazy">
       <div class="gg-over"><div class="gg-plus">+</div></div>
     </div>
   </div>
@@ -943,8 +902,8 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <h2 class="sh">Get in<br>Touch</h2>
     <div style="margin-top:2.5rem">
       <div class="ci"><div class="ci-icon">✉</div><div><div class="ci-lbl">General</div><div class="ci-val"><a href="mailto:info@grisfestival.com">info@grisfestival.com</a></div></div></div>
-      <div class="ci"><div class="ci-icon">🎭</div><div><div class="ci-lbl">Artists</div><div class="ci-val"><a href="mailto:artists@grisfestival.com">artists@grisfestival.com</a></div></div></div>
-      <div class="ci"><div class="ci-icon">📰</div><div><div class="ci-lbl">Press & Media</div><div class="ci-val"><a href="mailto:press@grisfestival.com">press@grisfestival.com</a></div></div></div>
+      </div>
+      </div>
     </div>
     <div class="soc">
       <a href="https://www.facebook.com/GRisFestival2024" target="_blank" class="sb">Facebook</a>
@@ -982,7 +941,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <div class="f-col"><h4>Explore</h4><ul>
       <li><a href="#about">About</a></li>
       <li><a href="#lineup">Lineup</a></li>
-      <li><a href="#program">Program</a></li>
+      <li><a href="#artists">Artists</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#">Videos</a></li>
     </ul></div>
