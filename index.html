@@ -490,6 +490,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <li><a href="#festivals">Festivals</a></li>
     <li><a href="#lineup">Lineup</a></li>
     <li><a href="#artists">Artists</a></li>
+    <li><a href="#teaser">Teaser</a></li>
     <li><a href="#gallery">Gallery</a></li>
     <li><a href="#auspices">Auspices & Sponsors</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -505,6 +506,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
   <a href="#festivals" onclick="closeMob()">Festivals</a>
   <a href="#lineup" onclick="closeMob()">Lineup</a>
   <a href="#artists" onclick="closeMob()">Artists</a>
+  <a href="#teaser" onclick="closeMob()">Teaser</a>
   <a href="#gallery" onclick="closeMob()">Gallery</a>
   <a href="#auspices" onclick="closeMob()">Auspices & Sponsors</a>
   <a href="#contact" onclick="closeMob()">Contact</a>
@@ -878,6 +880,22 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
       <img src="rena.jpg" alt="GRis Festival - Ρένα" loading="lazy">
       <div class="gg-over"><div class="gg-plus">+</div></div>
     </div>
+  </div>
+</section>
+
+
+<!-- TEASER -->
+<section id="teaser" style="padding:0;background:var(--black);position:relative;overflow:hidden">
+  <video
+    autoplay muted loop playsinline
+    style="width:100%;max-height:85vh;object-fit:cover;display:block;opacity:.85"
+    poster="ypogeia_hero.jpg">
+    <source src="teaser.mp4" type="video/mp4">
+  </video>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,5,4,1) 0%,rgba(6,5,4,.1) 30%,rgba(6,5,4,.1) 70%,rgba(6,5,4,1) 100%);pointer-events:none"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:2">
+    <div style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(.6rem,1.5vw,1rem);letter-spacing:.35em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem">Watch the Teaser</div>
+    <div style="font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(2rem,6vw,5rem);line-height:.9;letter-spacing:-.02em;text-transform:uppercase;color:var(--white);text-shadow:0 2px 40px rgba(0,0,0,.8)">Greece<br>As It Is</div>
   </div>
 </section>
 
