@@ -546,6 +546,17 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
 }
 .logo-item.on-white img{filter:none;max-height:45px}
 
+.logo-item.sp-img{background:transparent}
+.logo-item.sp-img img{
+  max-height:70px;
+  max-width:180px;
+  width:auto;height:auto;
+  object-fit:contain;
+  filter:none;
+  display:block;
+}
+
+
 .logo-item.sp-text{display:flex;align-items:center;flex-direction:row}
 .logo-item.sp-text span{font-family:'DM Sans',sans-serif;font-size:.6rem;letter-spacing:.05em;color:var(--light);line-height:1.4}
 
@@ -675,7 +686,12 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
 
 <!-- GALLERY STRIP -->
 <div class="gallery-strip">
-  <div class="gs-item"><img src="rena.jpg" alt="Ρένα" loading="lazy"><div class="gs-label">Music</div></div>
+  <div class="gs-item"><img src="gallery1.jpg" alt="GRis Festival" loading="lazy"><div class="gs-label">Athens 2024</div></div>
+  <div class="gs-item"><img src="gallery2.jpg" alt="GRis Festival" loading="lazy"><div class="gs-label">Berlin 2025</div></div>
+  <div class="gs-item"><img src="gallery3.jpg" alt="GRis Festival" loading="lazy"><div class="gs-label">Dance</div></div>
+  <div class="gs-item"><img src="gallery4.jpg" alt="GRis Festival" loading="lazy"><div class="gs-label">Music</div></div>
+  <div class="gs-item"><img src="ypogeia1.jpg" alt="GRis Festival" loading="lazy"><div class="gs-label">Theatre</div></div>
+</div>
   <div class="gs-item"><img src="ypogeia_hero.jpg" alt="GRis Festival" loading="lazy"><div class="gs-label">Theatre</div></div>
   <div class="gs-item"><img src="gallery3.jpg" alt="GRis Festival" loading="lazy"><div class="gs-label">Dance</div></div>
   <div class="gs-item"><img src="gallery4.jpg" alt="GRis Festival" loading="lazy"><div class="gs-label">Visual Arts</div></div>
@@ -906,111 +922,12 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
 </section>
 
 <!-- AUSPICES & SPONSORS -->
-<section id="auspices" class="sp-section">
+<section id="auspices" style="padding:7vw 4vw;background:var(--black)">
   <div class="reveal">
     <div class="sl">Support</div>
-    <h2 class="sh" style="margin-bottom:3.5rem">Auspices &<br>Sponsors</h2>
-
-    <!-- UNDER THE AUSPICES -->
-    <div class="sp-group-label">Under the Auspices & Collaboration</div>
-    <div class="logos-grid">
-      <!-- Hellenic Republic Ministry of Culture -->
-      <div class="logo-item" title="Hellenic Republic — Ministry of Culture" style="flex-direction:column;align-items:flex-start;gap:.3rem">
-        <span style="font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)">Hellenic Republic</span>
-        <span style="font-family:'Unbounded',sans-serif;font-size:.7rem;font-weight:700;color:var(--white);line-height:1.2">Ministry<br>of Culture</span>
-      </div>
-      <!-- Ministry of Foreign Affairs -->
-      <div class="logo-item" title="Ministry of Foreign Affairs — General Secretariat for Greeks Abroad" style="flex-direction:column;align-items:flex-start;gap:.3rem">
-        <span style="font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)">Hellenic Republic</span>
-        <span style="font-family:'Unbounded',sans-serif;font-size:.62rem;font-weight:700;color:var(--white);line-height:1.3;max-width:160px">Ministry of Foreign Affairs<br><span style="font-weight:400;color:var(--light)">General Secretariat for Greeks Abroad</span></span>
-      </div>
-      <!-- EOT / GNTO -->
-      <div class="logo-item color" title="Greek National Tourism Organisation">
-        <img src="logo_eot_color.png" alt="Greek National Tourism Organisation — Visit Greece">
-      </div>
-      <!-- Embassy Berlin -->
-      <div class="logo-item on-white" title="Botschaft der Hellenischen Republik Berlin">
-        <img src="logo_presvia_verolino.jpg" alt="Πρεσβεια Ελλαδας στο Βερολινο">
-      </div>
-      <!-- Embassy London -->
-      <div class="logo-item on-white" title="Embassy of Greece in London">
-        <img src="logo_embassy_london.png" alt="Embassy of Greece in London">
-      </div>
-      <!-- Hellenische Gemeinde zu Berlin -->
-      <div class="logo-item" title="Hellenische Gemeinde zu Berlin">
-        <span style="font-family:'Unbounded',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;color:var(--light);text-align:center;line-height:1.4">Hellenische<br>Gemeinde<br>zu Berlin</span>
-      </div>
-      <!-- Freie Universitat Berlin -->
-      <div class="logo-item" title="Freie Universitat Berlin">
-        <span style="font-family:'Unbounded',sans-serif;font-size:.65rem;font-weight:900;letter-spacing:.05em;color:var(--accent);text-align:center;line-height:1.3">FREIE<br>UNIVERSITAT<br>BERLIN</span>
-      </div>
-      <!-- CeMoG -->
-      <div class="logo-item" title="CeMoG — Centrum Modernes Griechenland">
-        <span style="font-family:'Unbounded',sans-serif;font-size:.8rem;font-weight:900;letter-spacing:.05em;color:var(--light)">CeMoG</span>
-        <span style="margin-left:.4rem;font-size:.52rem;letter-spacing:.06em;color:var(--gray);line-height:1.3">Centrum<br>Modernes<br>Griechenland</span>
-      </div>
-      <!-- NKUA -->
-      <div class="logo-item" title="National and Kapodistrian University of Athens" style="flex-direction:column;align-items:flex-start;gap:.3rem">
-        <span style="font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)">Hellenic Republic</span>
-        <span style="font-family:'Unbounded',sans-serif;font-size:.62rem;font-weight:700;color:var(--white);line-height:1.3">National &amp; Kapodistrian<br><span style="font-weight:400;color:var(--light)">University of Athens</span></span>
-      </div>
-      <!-- Health Crisis Line -->
-      <div class="logo-item" title="Health Crisis Line" style="gap:.6rem">
-        <img src="logo_hcl_mark.png" alt="HCL" style="max-height:52px;max-width:52px;background:white;padding:5px;border-radius:2px">
-        <img src="logo_hcl_word.png" alt="Health Crisis Line" style="max-height:32px;background:white;padding:4px 8px;border-radius:2px;filter:none">
-      </div>
-    </div>
-
-    <!-- MEDIA SPONSORS -->
-    <div class="sp-group-label">Media Sponsors</div>
-    <div class="logos-grid">
-      <div class="logo-item" title="EPT">
-        <span style="font-family:'Unbounded',sans-serif;font-size:1.8rem;font-weight:900;color:#009cde;letter-spacing:-.02em">EPT</span>
-      </div>
-      <div class="logo-item" title="EPT3">
-        <span style="font-family:'Unbounded',sans-serif;font-size:1.8rem;font-weight:900;color:#00a651;letter-spacing:-.02em">EPT<span style="color:#009cde">3</span></span>
-      </div>
-      <div class="logo-item" title="ERT World">
-        <span style="font-family:'Unbounded',sans-serif;font-size:1.4rem;font-weight:900;letter-spacing:.05em">ERT <span style="background:#009cde;color:#fff;padding:.1em .3em">WORLD</span></span>
-      </div>
-      <div class="logo-item" title="Voice of Greece">
-        <span style="font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:400;font-style:italic;color:var(--light)">Voice of Greece<br><span style="font-size:.55rem;letter-spacing:.15em;font-style:normal;text-transform:uppercase;color:var(--gray)">Hellenic Radio</span></span>
-      </div>
-      <div class="logo-item" title="Cosmo Sta Ellinika">
-        <span style="font-family:'Unbounded',sans-serif;font-size:.8rem;font-weight:900;color:#e84a6f;letter-spacing:.05em;background:#111;padding:.4em .7em">COSMO<br>STA ELLINIKA</span>
-      </div>
-      <div class="logo-item" title="Exantas — Deutsch-Griechische Gesellschaft Berlin">
-        <span style="font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:400;color:var(--light);font-style:italic">Exantas</span>
-        <span style="margin-left:.4rem;font-size:.48rem;letter-spacing:.05em;color:var(--gray);line-height:1.3">Deutsch-Griechische<br>Gesellschaft Berlin</span>
-      </div>
-      <div class="logo-item" title="Hephaestus Web">
-        <span style="font-family:'Unbounded',sans-serif;font-size:.75rem;font-weight:700;color:#4a8ce8;letter-spacing:.08em">hephaestus<br><span style="font-size:.55rem;color:var(--gray)">web &amp; radio</span></span>
-      </div>
-    </div>
-
-    <!-- SPONSORS -->
-    <div class="sp-group-label">Sponsors</div>
-    <div class="logos-grid tight">
-      <div class="logo-item" title="GECS — Global Educational & Cultural Services">
-        <span style="font-family:'Unbounded',sans-serif;font-size:.75rem;font-weight:700;color:#4a8ce8;letter-spacing:.1em">GECS<br><span style="font-size:.45rem;color:var(--gray);font-weight:400;letter-spacing:.08em">Global Educational<br>&amp; Cultural Services</span></span>
-      </div>
-      <div class="logo-item" title="NYLC">
-        <span style="font-family:'Unbounded',sans-serif;font-size:1.5rem;font-weight:900;letter-spacing:.05em;color:var(--white)">NY<span style="color:var(--accent)">LC</span></span>
-      </div>
-      <div class="logo-item" title="Edu Standards">
-        <span style="font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:300;letter-spacing:.15em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:.2em;color:var(--white)">EDU STANDARDS</span>
-      </div>
-      <div class="logo-item" title="AR Akron Services">
-        <span style="font-family:'Unbounded',sans-serif;font-size:.8rem;font-weight:700;background:#111;padding:.4em .6em;letter-spacing:.05em;color:var(--white)">AR <span style="color:var(--accent)">Akron</span></span>
-      </div>
-      <div class="logo-item" title="FYLY Yachting">
-        <span style="font-family:'Unbounded',sans-serif;font-size:.85rem;font-weight:700;color:#4a8ce8;letter-spacing:.08em">FYLY<br><span style="font-size:.5rem;color:var(--gray);font-weight:400;letter-spacing:.15em">YACHTING</span></span>
-      </div>
-      <div class="logo-item" title="Ayaia">
-        <span style="font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:400;color:#c41e3a;letter-spacing:.1em">AYAIA</span>
-      </div>
-    </div>
-
+    <h2 class="sh" style="margin-bottom:3rem">Auspices &<br>Sponsors</h2>
+    <img src="sponsors_all.png" alt="Auspices and Sponsors — GRis Festival Berlin 2025"
+      style="width:100%;max-width:900px;display:block;margin:0 auto;border-radius:4px">
   </div>
 </section>
 
