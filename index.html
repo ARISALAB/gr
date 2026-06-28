@@ -545,6 +545,10 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
   padding:.6rem 1rem;border-radius:2px;
 }
 .logo-item.on-white img{filter:none;max-height:45px}
+
+.logo-item.sp-text{display:flex;align-items:center;flex-direction:row}
+.logo-item.sp-text span{font-family:'DM Sans',sans-serif;font-size:.6rem;letter-spacing:.05em;color:var(--light);line-height:1.4}
+
 @media(max-width:640px){
   .logos-grid{gap:2rem 2.5rem}
   .logo-item img{max-height:40px;max-width:120px}
@@ -911,14 +915,14 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
     <div class="sp-group-label">Under the Auspices & Collaboration</div>
     <div class="logos-grid">
       <!-- Hellenic Republic Ministry of Culture -->
-      <div class="logo-item on-white" title="Hellenic Republic — Ministry of Culture">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Coat_of_arms_of_Greece.svg/240px-Coat_of_arms_of_Greece.svg.png" alt="Ministry of Culture Greece">
-        <span style="margin-left:.5rem;font-size:.6rem;letter-spacing:.08em;color:var(--light);line-height:1.3">Hellenic Republic<br>Ministry of Culture</span>
+      <div class="logo-item" title="Hellenic Republic — Ministry of Culture" style="flex-direction:column;align-items:flex-start;gap:.3rem">
+        <span style="font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)">Hellenic Republic</span>
+        <span style="font-family:'Unbounded',sans-serif;font-size:.7rem;font-weight:700;color:var(--white);line-height:1.2">Ministry<br>of Culture</span>
       </div>
       <!-- Ministry of Foreign Affairs -->
-      <div class="logo-item" title="Ministry of Foreign Affairs — General Secretariat for Greeks Abroad">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Coat_of_arms_of_Greece.svg/240px-Coat_of_arms_of_Greece.svg.png" alt="Ministry of Foreign Affairs">
-        <span style="margin-left:.5rem;font-size:.55rem;letter-spacing:.06em;color:var(--light);line-height:1.3;max-width:130px">Ministry of Foreign Affairs<br>General Secretariat for Greeks Abroad</span>
+      <div class="logo-item" title="Ministry of Foreign Affairs — General Secretariat for Greeks Abroad" style="flex-direction:column;align-items:flex-start;gap:.3rem">
+        <span style="font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)">Hellenic Republic</span>
+        <span style="font-family:'Unbounded',sans-serif;font-size:.62rem;font-weight:700;color:var(--white);line-height:1.3;max-width:160px">Ministry of Foreign Affairs<br><span style="font-weight:400;color:var(--light)">General Secretariat for Greeks Abroad</span></span>
       </div>
       <!-- EOT / GNTO -->
       <div class="logo-item color" title="Greek National Tourism Organisation">
@@ -946,13 +950,14 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.04)}
         <span style="margin-left:.4rem;font-size:.52rem;letter-spacing:.06em;color:var(--gray);line-height:1.3">Centrum<br>Modernes<br>Griechenland</span>
       </div>
       <!-- NKUA -->
-      <div class="logo-item" title="National and Kapodistrian University of Athens">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Coat_of_arms_of_Greece.svg/240px-Coat_of_arms_of_Greece.svg.png" alt="University of Athens">
-        <span style="margin-left:.5rem;font-size:.55rem;letter-spacing:.06em;color:var(--light);line-height:1.3;max-width:120px">National &amp; Kapodistrian<br>University of Athens</span>
+      <div class="logo-item" title="National and Kapodistrian University of Athens" style="flex-direction:column;align-items:flex-start;gap:.3rem">
+        <span style="font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)">Hellenic Republic</span>
+        <span style="font-family:'Unbounded',sans-serif;font-size:.62rem;font-weight:700;color:var(--white);line-height:1.3">National &amp; Kapodistrian<br><span style="font-weight:400;color:var(--light)">University of Athens</span></span>
       </div>
       <!-- Health Crisis Line -->
-      <div class="logo-item on-white" title="Health Crisis Line">
-        <img src="logo_hcl_word.png" alt="Health Crisis Line">
+      <div class="logo-item" title="Health Crisis Line" style="gap:.6rem">
+        <img src="logo_hcl_mark.png" alt="HCL" style="max-height:52px;max-width:52px;background:white;padding:5px;border-radius:2px">
+        <img src="logo_hcl_word.png" alt="Health Crisis Line" style="max-height:32px;background:white;padding:4px 8px;border-radius:2px;filter:none">
       </div>
     </div>
 
